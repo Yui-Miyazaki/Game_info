@@ -38,6 +38,7 @@ public class Test extends HttpServlet {
 		// TODO Auto-generated method stub
 		//角谷
 		//宮崎
+		//中川
 	}
 
 }
