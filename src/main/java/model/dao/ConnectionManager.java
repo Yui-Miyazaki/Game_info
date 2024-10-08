@@ -8,19 +8,19 @@ public class ConnectionManager {
 	/**
 	 * データベースURL
 	 */
-	private static final String URL = "jdbc:mysql://localhost:3306/Employee";
+	private static final String URL = "jdbc:mysql://localhost:3306/GameStock";
 
 	/**
 	 * ユーザ名
 	 * データベースにアクセスするユーザ
 	 */
-	private static final String USER = "root";
+	private static final String USER = "User";
 
 	/**
 	 * パスワード
 	 * データベースにアクセスするユーザのパスワード
 	 */
-	private static final String PASSWORD = "minoru0522";
+	private static final String PASSWORD = "Game";
 
 	/**
 	 * データベース接続確立しコネクションを返す
