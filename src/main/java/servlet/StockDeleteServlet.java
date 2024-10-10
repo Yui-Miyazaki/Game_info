@@ -39,7 +39,7 @@ public class StockDeleteServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute("gameName", gameName);
 		session.setAttribute("itemCode", itemCode);
-		RequestDispatcher rd = request.getRequestDispatcher("stock_delete.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/delete/stock_delete.jsp");
 		rd.forward(request, response);
 		
 	}
@@ -49,14 +49,15 @@ public class StockDeleteServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String url ="delete_success.jsp";
+		String url ="WEB-INF/delete/delete_success.jsp";
 		String itemCode = request.getParameter("itemCode");
 		StockDAO dao = new StockDAO();
 		try {
+			System.out.println(itemCode);
 			int deleteCount = dao.deleteGame(itemCode);
 			
 			if(deleteCount == 0) {
-				url = "delete_failure.jsp";
+				url = "WEB-INF/delete/delete_failure.jsp";
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			

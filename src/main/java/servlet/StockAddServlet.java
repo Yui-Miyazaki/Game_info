@@ -35,7 +35,7 @@ public class StockAddServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		RequestDispatcher rd = request.getRequestDispatcher("stock_add.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/add/stock_add.jsp");
 		rd.forward(request, response);
 	}
 
@@ -46,7 +46,7 @@ public class StockAddServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 
-		String url = "add_success.jsp";
+		String url = "WEB-INF/add/add_failure.jsp";
 
 		String gameName = request.getParameter("gameName");
 		String maker = request.getParameter("maker");
@@ -55,31 +55,32 @@ public class StockAddServlet extends HttpServlet {
 		String strPrice = request.getParameter("price");
 		String strRanking = request.getParameter("ranking");
 		String itemCode = request.getParameter("itemCode");
-		//String型から変換
-		Date releaseDate = Date.valueOf(strDate);
-		int stock = Integer.parseInt(strStock);
-		int price = Integer.parseInt(strPrice);
-		int ranking = Integer.parseInt(strRanking);
-
-		//GameBean型のbeen変数にパラメータを格納
-		GameBean been = new GameBean();
-		been.setGameName(gameName);
-		been.setMaker(maker);
-		been.setReleseDate(releaseDate);
-		been.setStock(stock);
-		been.setPrice(price);
-		been.setRanking(ranking);
-		been.setItemCode(itemCode);
+		
 
 		StockDAO dao = new StockDAO();
 		try {
-			int registCount = dao.registGame(been);
+			//String型から変換
+			Date releaseDate = Date.valueOf(strDate);
+			int stock = Integer.parseInt(strStock);
+			int price = Integer.parseInt(strPrice);
+			int ranking = Integer.parseInt(strRanking);
+
+			//GameBean型のbeen変数にパラメータを格納
+			GameBean bean = new GameBean();
+			bean.setGameName(gameName);
+			bean.setMaker(maker);
+			bean.setReleseDate(releaseDate);
+			bean.setStock(stock);
+			bean.setPrice(price);
+			bean.setRanking(ranking);
+			bean.setItemCode(itemCode);
+			int registCount = dao.registGame(bean);
 			
 
-			if (registCount == 0) {
-				url = "add_failure.jsp";
+			if (registCount > 0) {
+				url = "WEB-INF/add/add_success.jsp";
 			}
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (IllegalArgumentException | ClassNotFoundException | SQLException e) {
 
 			e.printStackTrace();
 		}

@@ -43,7 +43,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String url = "menu.jsp";
+		String url = "WEB-INF/menu/menu.jsp";
 		String loginId = request.getParameter("id");
 		String password = request.getParameter("pass");
 		LoginDAO dao = new LoginDAO();
