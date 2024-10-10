@@ -48,8 +48,8 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("pass");
 		LoginDAO dao = new LoginDAO();
 		try {
-			int loginCheckCOunt = dao.loginCheck(loginId, password);
-			if (loginCheckCOunt < 1) {
+			int loginCheckCount = dao.loginCheck(loginId, password);
+			if (loginCheckCount < 1) {
 				url = "login.jsp";
 				String errorMessage = "ログイン認証に失敗しました。";
 				request.setAttribute("errorMessage", errorMessage);
