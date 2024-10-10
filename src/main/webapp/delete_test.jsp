@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>追加成功画面</title>
+<title>Insert title here</title>
 </head>
 <body>
-<h1>追加完了</h1>
-<form action="stockList" method="get">
-<input type="submit" value="在庫一覧へ">
+<form action="stockDelete" method="get">
+<input type="submit" value="更新">
+<input type="hidden" name="gameName" value="ペルソナ５">
 </form>
 </body>
 </html>

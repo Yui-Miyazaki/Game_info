@@ -7,10 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>削除完了</h1>
-<p>Complete</p>
-<form action="stockList" method="get">
-	<input type="submit" value="在庫一覧へ">
-	</form>
+<form action="stockUpdate" method="get">
+<input type="submit" value="更新">
+<input type="hidden" name="gameName" value="ペルソナ５">
+<input type="hidden" name="itemCode" value="C01">
+</form>
 </body>
 </html>
