@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.dao.TestDAO;
+import model.dao.StockDAO;
 import model.entity.GameBean;
 
 /**
@@ -48,7 +48,7 @@ public class StockAddServlet extends HttpServlet {
 
 		String url = "add_success.jsp";
 
-		String gameName = request.getParameter("itemName");
+		String gameName = request.getParameter("gameName");
 		String maker = request.getParameter("maker");
 		String strDate = request.getParameter("releaseDate");
 		String strStock = request.getParameter("stock");
@@ -71,10 +71,10 @@ public class StockAddServlet extends HttpServlet {
 		been.setRanking(ranking);
 		been.setItemCode(itemCode);
 
-		TestDAO dao = new TestDAO();
+		StockDAO dao = new StockDAO();
 		try {
 			int registCount = dao.registGame(been);
-			System.out.println(registCount);
+			
 
 			if (registCount == 0) {
 				url = "add_failure.jsp";

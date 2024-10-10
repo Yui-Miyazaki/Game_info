@@ -13,7 +13,7 @@
 <form action="stockDelete" method="post">
 <input type="submit" value="削除">
 </form>
-	<form action="StockList" method="get">
+	<form action="stockList" method="get">
 	<input type="submit" value="在庫一覧へ">
 	</form>
 </body>

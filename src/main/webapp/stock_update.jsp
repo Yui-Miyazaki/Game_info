@@ -35,7 +35,7 @@
 		<input type="hidden" name="itemCode" value=<%=itemCode %>>
 		<input type="submit" value="更新">
 		</form>
-		<form action="StockList" method="get">
+		<form action="stockList" method="get">
 	<input type="submit" value="在庫一覧へ">
 	</form>
 </body>

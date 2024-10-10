@@ -37,7 +37,7 @@
 		<input type="text" name="itemCode"><br>
 		<input type="submit" value="登録">
 	</form>
-	<form action="StockList" method="get">
+	<form action="stockList" method="get">
 	<input type="submit" value="在庫一覧へ">
 	</form>
 </body>

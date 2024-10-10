@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.dao.TestDAO;
+import model.dao.StockDAO;
 
 /**
  * Servlet implementation class StockUpdateServlet
@@ -35,7 +35,7 @@ public class StockUpdateServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String gameName = request.getParameter("gameName");
 		String itemCode = request.getParameter("itemCode");
-		System.out.println(gameName);
+		
 		HttpSession session = request.getSession();
 		session.setAttribute("gameName", gameName);
 		session.setAttribute("itemCode", itemCode);
@@ -57,11 +57,11 @@ public class StockUpdateServlet extends HttpServlet {
 		int stock = Integer.parseInt(strStock);
 		int ranking = Integer.parseInt(strRanking);
 		
-		TestDAO dao = new TestDAO();
+		StockDAO dao = new StockDAO();
 		try {
 			int price = Integer.parseInt(strPrice);
 			int updateCount = dao.updateStock(stock,price,ranking,itemCode);
-			System.out.println(updateCount);
+			
 			if(updateCount >= 1) {
 				url = "update_success.jsp";
 			}

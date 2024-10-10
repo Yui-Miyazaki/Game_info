@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.dao.TestDAO;
+import model.dao.StockDAO;
 
 /**
  * Servlet implementation class StockDeleteServlet
@@ -35,7 +35,7 @@ public class StockDeleteServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String gameName = request.getParameter("gameName");
 		String itemCode = request.getParameter("itemCode");
-		System.out.println(gameName);
+
 		HttpSession session = request.getSession();
 		session.setAttribute("gameName", gameName);
 		session.setAttribute("itemCode", itemCode);
@@ -51,7 +51,7 @@ public class StockDeleteServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String url ="delete_success.jsp";
 		String itemCode = request.getParameter("itemCode");
-		TestDAO dao = new TestDAO();
+		StockDAO dao = new StockDAO();
 		try {
 			int deleteCount = dao.deleteGame(itemCode);
 			
