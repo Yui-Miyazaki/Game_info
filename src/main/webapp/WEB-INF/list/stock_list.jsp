@@ -1,8 +1,10 @@
 <%@page import="model.entity.GameBean"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%List<GameBean> stockList = (List<GameBean>)session.getAttribute("stockList"); %>
+	pageEncoding="UTF-8"%>
+<%
+List<GameBean> stockList = (List<GameBean>) session.getAttribute("stockList");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +13,19 @@
 </head>
 <body>
 	<h1>在庫管理一覧</h1>
+	<form action="stockSearch" method="post">
+		<input type="text" name="gameName" placeholder="ゲーム名を入力してください。">
+		<input type="text" name="maker" placeholder="メーカー名を入力してください。">
+		<select name="stock">
+			<%
+			for (int i = 1; i <= 10; i++) {
+			%>
+			<option><%=i%></option>
+			<%
+			}
+			%>
+		</select> <input type="submit" value="検索🔍">
+	</form>
 	<table border="1">
 		<tr>
 			<th>ゲームID</th>
@@ -36,16 +51,16 @@
 			<td><%=game.getItemCode()%></td>
 			<td>
 				<form action="stockUpdate" method="get">
-					<input type="submit" value="更新">
-					<input type="hidden" name="gameName" value=<%=game.getGameName()%>>
-					<input type="hidden" name="itemCode"  value=<%=game.getItemCode()%>>
+					<input type="submit" value="更新"> <input type="hidden"
+						name="gameName" value=<%=game.getGameName()%>> <input
+						type="hidden" name="itemCode" value=<%=game.getItemCode()%>>
 				</form>
 			</td>
 			<td>
 				<form action="stockDelete" method="get">
-					<input type="submit" value="削除">
-					<input type="hidden" name="gameName" value=<%=game.getGameName()%>>
-					<input type="hidden" name="itemCode"  value=<%=game.getItemCode()%>>
+					<input type="submit" value="削除"> <input type="hidden"
+						name="gameName" value=<%=game.getGameName()%>> <input
+						type="hidden" name="itemCode" value=<%=game.getItemCode()%>>
 				</form>
 			</td>
 		</tr>
@@ -59,15 +74,6 @@
 	<form action="logout" method="get">
 		<input type="submit" value="ログアウト">
 	</form>
-	<form action="stockSearch" method="post">
-	<input type="text" name="gameName" placeholder="ゲーム名を入力してください。">
-	<input type="text" name="maker" placeholder="メーカー名を入力してください。">
-	<select name="stock">
-		<%for(int i = 1;i <= 10;i++) {%>
-			<option><%=i %></option>
-		<%} %>
-	</select>
-	<input type="submit" value="🔍">
-	</form>
+
 </body>
 </html>

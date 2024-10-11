@@ -66,14 +66,14 @@ public class StockDAO {
 				stockPstmt.setInt(3, addBean.getPrice());
 				stockPstmt.setInt(4, addBean.getRanking());
 				stockPstmt.executeUpdate();
-				
+
 				//m_gameのインサート
 				gamePstmt.setString(1, addBean.getGameName());
 				gamePstmt.setString(2, addBean.getMaker());
 				gamePstmt.setDate(3, addBean.getReleseDate());
 				gamePstmt.setString(4, addBean.getItemCode());
 				registCount = gamePstmt.executeUpdate();
-				
+
 				con.commit();
 			} catch (SQLException e) {
 				con.rollback();
@@ -105,5 +105,56 @@ public class StockDAO {
 			}
 		}
 		return deleteCount;
+	}
+
+	public List<GameBean> getGameSearch(String gameName, String maker, int stock)
+			throws ClassNotFoundException, SQLException {
+		List<GameBean> searchResultList = new ArrayList<GameBean>();
+		String sql = "SELECT t1.game_id,t1.game_name,t1.maker,t1.release_date,t2.stock,t2.price,t2.ranking,t2.item_code "
+				+ "FROM m_game t1 JOIN t_stock t2 "
+				+ "ON t1.item_code = t2.item_code "
+				+ "WHERE stock = ? ";
+		if (!gameName.isEmpty() && !maker.isEmpty()) {
+			sql += "OR game_name LIKE ? OR maker LIKE ?";
+
+		} else if (!gameName.isEmpty()) {
+			sql += "OR game_name LIKE ?";
+
+		} else if (!maker.isEmpty()) {
+			sql += "OR maker LIKE ?";
+		}
+		try (Connection con = ConnectionManager.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql)) {
+
+			//pstmt.setString(1, "%" + gameName + "%");
+			//pstmt.setString(2, "%" + maker + "%");
+			pstmt.setInt(1, stock);
+			if (!gameName.isEmpty() && !maker.isEmpty()) {
+				pstmt.setString(2, "%" + gameName + "%");
+				pstmt.setString(3, "%" + maker + "%");
+			} else if (!gameName.isEmpty()) {
+				pstmt.setString(2, "%" + gameName + "%");
+
+			} else if (!maker.isEmpty()) {
+				pstmt.setString(2, "%" + maker + "%");
+			}
+			ResultSet res = pstmt.executeQuery();
+
+			while (res.next()) {
+				GameBean game = new GameBean();
+				game.setGameId(res.getInt("game_id"));
+				game.setGameName(res.getString("game_name"));
+				game.setMaker(res.getString("maker"));
+				game.setReleseDate(res.getDate("release_date"));
+				game.setStock(res.getInt("stock"));
+				game.setPrice(res.getInt("price"));
+				game.setRanking(res.getInt("ranking"));
+				game.setItemCode(res.getString("item_code"));
+				searchResultList.add(game);
+
+			}
+
+			return searchResultList;
+		}
 	}
 }

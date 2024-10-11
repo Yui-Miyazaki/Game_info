@@ -41,7 +41,7 @@ public class StockListServlet extends HttpServlet {
 			List<GameBean> stockList = dao.getStockList();
 			HttpSession session = request.getSession();
 			session.setAttribute("stockList", stockList);
-			System.out.println(stockList);
+			
 		} catch (ClassNotFoundException | SQLException e) {
 			
 			e.printStackTrace();

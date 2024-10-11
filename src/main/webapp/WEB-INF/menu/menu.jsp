@@ -12,12 +12,17 @@
        <form action="stockList" method="get">
 			<div>
 				<button type="submit">在庫管理一覧</button>
-		　　</div>
+		</div>
+		</form>
+		<form action="employeeList" method="get">
+			<div>
+				<button type="submit">従業員一覧</button>
+		</div>
 		</form>
 		<form action="logout" method="get">
 		<div>
 				<button type="submit">ログアウト</button>
-		　　</div>
+		</div>
 		</form>
  </div>
 </body>
