@@ -47,7 +47,7 @@ public class EmployeeAddServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/add_employee/employee_add.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/employee/add/employee_add.jsp");
         rd.forward(request, response);
 
     }
@@ -58,7 +58,7 @@ public class EmployeeAddServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        String url = "WEB-INF/add_employee/employeeAdd_failure.jsp";
+        String url = "WEB-INF/employee/add/employeeAdd_failure.jsp";
         String name = request.getParameter("name");
         String strAge = request.getParameter("age");
         String postCode = request.getParameter("postCode");
@@ -69,7 +69,7 @@ public class EmployeeAddServlet extends HttpServlet {
         try {
             int addEmployeeCount = dao.addEmployee(name, age, postCode);
             if (addEmployeeCount > 0) {
-                url = "WEB-INF/add_employee/employeeAdd_success.jsp";
+                url = "WEB-INF/employee/add/employeeAdd_success.jsp";
             }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
