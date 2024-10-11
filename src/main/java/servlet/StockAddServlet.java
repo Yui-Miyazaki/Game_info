@@ -35,7 +35,7 @@ public class StockAddServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/add/stock_add.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/game_stock/add/stock_add.jsp");
 		rd.forward(request, response);
 	}
 
