@@ -1,0 +1,11 @@
+@charset "UTF-8";
+.textBox{
+	margin-top: 5px;
+	margin-bottom: 20px;
+}
+.main{
+	margin: 0 auto;
+	padding: 20px;
+	width: 400px;
+	border: 3px dotted limegreen;
+}

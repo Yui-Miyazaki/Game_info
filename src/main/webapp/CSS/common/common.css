@@ -1,0 +1,29 @@
+@charset "UTF-8";
+body{
+	text-align: center;
+	background-color:black;
+	color: limegreen;
+	font-family: Arial;
+}
+.textBox{
+	height: 25px;
+}
+.errorMessage{
+	color: red;
+}
+.btn{
+	width: 100px;
+	height: 40px;
+	border-radius:10px;
+	background-color: limegreen;
+	color:black;
+	font-weight:900;
+}
+.resetBtn{
+	width: 100px;
+	height: 40px;
+	border-radius:10px;
+	background-color:#FF6600;
+	color:black;
+	font-weight:900;
+}

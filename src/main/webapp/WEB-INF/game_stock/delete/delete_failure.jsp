@@ -8,14 +8,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="CSS/common/error_page.css">
+<link rel="stylesheet" href="CSS/common/common.css">
 <title>削除エラー画面</title>
 </head>
 <body>
-<h1>Delete Error!</h1>
+<div class="main">
+<h1 class="errorMessage">Delete Error!</h1>
 <form action="stockDelete" method="get">
 <input type="hidden" name="gameName" value=<%=gameName %>>
 <input type="hidden" name="itemCode" value=<%=itemCode %>>
-<input type="submit" value="戻る">
+<input class="btn" type="submit" value="戻る">
 </form>
+</div>
 </body>
 </html>

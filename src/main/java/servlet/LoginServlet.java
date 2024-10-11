@@ -46,6 +46,7 @@ public class LoginServlet extends HttpServlet {
 		String url = "WEB-INF/menu/menu.jsp";
 		String loginId = request.getParameter("id");
 		String password = request.getParameter("pass");
+		System.out.println(loginId + password);
 		LoginDAO dao = new LoginDAO();
 		try {
 			int loginCheckCount = dao.loginCheck(loginId, password);
