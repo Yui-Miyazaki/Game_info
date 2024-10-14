@@ -17,7 +17,6 @@
 			<th>氏名</th>
 			<th>年齢</th>
 			<th>役職</th>
-			<th></th>
 		</tr>
 		<%
 		for (EmployeeBean employee : employeeList) {
@@ -27,6 +26,18 @@
 			<td><%=employee.getName()%></td>
 			<td><%=employee.getAge()%></td>
 			<td><%=employee.getPostName()%></td>
+			<td>
+				<form action="employeeUpdate" method="get">
+				<input type="hidden" name="employeeId" value=<%=employee.getEmployeeId()%>>
+				<input type="submit" value="更新">
+			</form>
+			</td>
+			<td>
+				<form action="employeeDelete" method="get">
+				<input type="hidden" name="employeeId" value=<%=employee.getEmployeeId()%>>
+				<input type="submit" value="削除">
+			</form>
+			</td>
 			</tr>
 			<%} %>
 			</table>

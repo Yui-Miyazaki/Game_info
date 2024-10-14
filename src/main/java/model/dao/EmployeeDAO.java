@@ -62,4 +62,50 @@ public class EmployeeDAO {
 		}
 		return postList;
 	}
+
+	public EmployeeBean getEmployeeInfo(int employeeId) throws ClassNotFoundException, SQLException {
+		EmployeeBean employee = null;
+		String sql = "SELECT t1.name, t1.age, t2.post_name "
+				+ "FROM m_employee t1 JOIN m_post t2 "
+				+ "ON t1.post_code = t2.post_code WHERE employee_id = ?";
+		try (Connection con = ConnectionManager.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql)) {
+			pstmt.setInt(1, employeeId);
+			ResultSet res = pstmt.executeQuery();
+			if (res.next()) {
+				employee = new EmployeeBean();
+				employee.setName(res.getString("name"));
+				employee.setAge(res.getString("age"));
+				employee.setPostName(res.getString("post_name"));
+			}
+		}
+		return employee;
+	}
+
+	public int employeeUpdate(String name, int age, String postCode, int employeeId)
+			throws ClassNotFoundException, SQLException {
+		int updateCount = 0;
+		String sql = " UPDATE m_employee SET name = ?,age = ?,post_code = ? WHERE employee_id = ?;";
+		try (Connection con = ConnectionManager.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql)) {
+			pstmt.setString(1, name);
+			pstmt.setInt(2, age);
+			pstmt.setString(3, postCode);
+			pstmt.setInt(4, employeeId);
+			updateCount = pstmt.executeUpdate();
+		}
+		return updateCount;
+	}
+
+	public int employeeDelete(int employeeId) throws ClassNotFoundException, SQLException {
+		int deleteCount = 0;
+		String sql = "DELETE FROM m_employee WHERE employee_id = ?;";
+		try (Connection con = ConnectionManager.getConnection();
+			PreparedStatement pstmt = con.prepareStatement(sql)) {
+			pstmt.setInt(1, employeeId);
+			deleteCount = pstmt.executeUpdate();
+		}
+		return deleteCount;
+
+	}
 }
