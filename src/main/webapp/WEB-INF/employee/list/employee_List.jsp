@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="CSS/common/common.css">
+<link rel="stylesheet" href="CSS/common/btn.css">
 <link rel="stylesheet" href="CSS/registPageCSS/list_page.css">
 <title>従業員一覧</title>
 </head>
@@ -19,6 +20,11 @@
 			<th class="column_name">氏名</th>
 			<th class="column_name">年齢</th>
 			<th class="column_name">役職</th>
+			<th class="column_name" colspan="2">
+			<form action="employeeAdd" method="get">
+			<input type="submit"  class="regist_btn" value="新規登録">
+			</form>
+			</th>
 		</tr>
 		<%
 		for (EmployeeBean employee : employeeList) {
@@ -31,7 +37,7 @@
 			<td>
 				<form action="employeeUpdate" method="get">
 				<input type="hidden" name="employeeId" value=<%=employee.getEmployeeId()%>>
-				<input type="submit" class="btn" value="更新">
+				<input type="submit" class="update_btn" value="更新">
 			</form>
 			</td>
 			<td>
@@ -43,9 +49,6 @@
 			</tr>
 			<%} %>
 			</table>
-			<form action="employeeAdd" method="get">
-			<input type="submit"  class="btn" value="新規登録">
-			</form>
 			<form action="menu" method="get">
 			<input type="submit" class="btn" value="メニュー画面">
 			</form>

@@ -12,6 +12,7 @@ EmployeeBean employee = (EmployeeBean) session.getAttribute("employee");
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="CSS/common/common.css">
+<link rel="stylesheet" href="CSS/common/btn.css">
 <link rel="stylesheet" href="CSS/formCSS/form.css">
 <link rel="stylesheet" href="CSS/registPageCSS/list_page.css">
 <title>更新画面</title>

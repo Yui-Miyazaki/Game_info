@@ -10,12 +10,14 @@ List<PostBean> postList = (List) session.getAttribute("postList");
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="CSS/common/common.css">
+<link rel="stylesheet" href="CSS/common/btn.css">
 <link rel="stylesheet" href="CSS/formCSS/form.css">
 <title>従業員追加画面</title>
 </head>
 <body>
 	<h1>従業員追加画面</h1>
 	<div class="main">
+	<h2>登録情報入力</h2>
 	<form action="employeeAdd" method="post">
 		<div class="flexItem">
 			<span class="item">氏名</span> <input type="text" class="textBox" name="name"><br>
