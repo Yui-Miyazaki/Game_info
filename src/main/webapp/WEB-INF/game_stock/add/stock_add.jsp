@@ -4,41 +4,61 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="CSS/common/common.css">
+<link rel="stylesheet" href="CSS/common/result_page.css">
+<link rel="stylesheet" href="CSS/formCSS/form.css">
 <title>在庫追加画面</title>
 </head>
 <body>
 	<h1>在庫追加画面</h1>
+	<div class="main">
 	<form action="stockAdd" method="post">
-		商品名 
-		<input type="text" name="gameName"><br>
-		メーカー
-		<input type="text"name="maker"><br>
-		発売日
-		<input type="date" name="releaseDate"><br>
-		在庫数
-		<select name="stock">
-		<%for(int i = 1;i <= 10;i++){ %>
+	<div class="flexItem">
+		<span class="item">商品名</span> <input type="text" class="textBox" name="gameName"><br>
+		</div>
+		<div class="flexItem">
+		<span class="item">メーカー</span> <input type="text" class="textBox"name="maker"><br>
+		</div> 
+		<div class="flexItem">
+		<span class="item">発売日</span> <input type="date" name="releaseDate"><br>
+		</div>
+		<div class="flexItem">
+		<span class="item">在庫数</span> <select name="stock" class="selectBox">
+			<%
+			for (int i = 1; i <= 10; i++) {
+			%>
 			<option>
-			<%=i %>
-			<%} %>
+				<%=i%>
+				<%
+				}
+				%>
 			</option>
 		</select><br>
-		販売価格
-		<input type="number" name="price"><br>
-		人気
-		<select name="ranking">
-		<%for(int i = 1;i <= 10;i++){ %>
+		</div>
+		<div class="flexItem">
+		 <span class="item">販売価格</span> <input type="number" class="textBox" name="price"><br>
+		 </div>
+		 <div class="flexItem">
+		<span class="item">人気</span> <select name="ranking"class="selectBox">
+			<%
+			for (int i = 1; i <= 10; i++) {
+			%>
 			<option>
-			<%=i %>
-			<%} %>
+				<%=i%>
+				<%
+				}
+				%>
 			</option>
 		</select><br>
-		商品コード
-		<input type="text" name="itemCode"><br>
+		</div>
+		<div class="flexItem"> 
+		<span class="item">商品コード</span> <input type="text" class="textBox" name="itemCode"><br>
+		</div>
 		<input type="submit" value="登録">
 	</form>
+	</div>
 	<form action="stockList" method="get">
-	<input type="submit" value="在庫一覧へ">
+		<input type="submit" value="在庫一覧へ">
 	</form>
 </body>
 </html>

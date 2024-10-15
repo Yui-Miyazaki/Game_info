@@ -8,11 +8,23 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="CSS/common/common.css">
+<link rel="stylesheet" href="CSS/registPageCSS/list_page.css">
 <title>在庫管理一覧画面</title>
 </head>
 <body>
 	<h1>在庫管理一覧</h1>
-	<table border="1">
+	<form class="search_box" action="stockSearch" method="post">
+	<input type="text" class="textBox" name="gameName" placeholder="ゲーム名を入力してください。">
+	<input type="text" class="textBox" name="maker" placeholder="メーカー名を入力してください。">
+	<select  name="stock"class="textBox">
+		<%for(int i = 1;i <= 10;i++) {%>
+			<option class="selectBox" value="在庫数">
+			<%=i %></option>
+		<%} %>
+	</select>
+	<input type="submit" class="btn" value="検索🔍">
+	</form>
+	<table border="1" class="list">
 		<tr>
 			<th>ゲームID</th>
 			<th>ゲーム名</th>
@@ -54,21 +66,15 @@
 		}
 		%>
 	</table>
+	<div class="btn_box">
 	<form action="stockAdd" method="get">
-		<input type="submit" class="btn" value="追加">
+		<input type="submit" class="btn" value="新規登録">
 	</form>
+	</div>
+	<div class="logout_btn">
 	<form action="logout" method="get">
 		<input type="submit" class="resetBtn" value="ログアウト">
 	</form>
-	<form action="stockSearch" method="post">
-	<input type="text" class="textBox" name="gameName" placeholder="ゲーム名を入力してください。">
-	<input type="text" class="textBox" name="maker" placeholder="メーカー名を入力してください。">
-	<select  name="stock">
-		<%for(int i = 1;i <= 10;i++) {%>
-			<option class="selectBox" value=""><%=i %></option>
-		<%} %>
-	</select>
-	<input type="submit" class="btn" value="検索🔍">
-	</form>
+	</div>
 </body>
 </html>
