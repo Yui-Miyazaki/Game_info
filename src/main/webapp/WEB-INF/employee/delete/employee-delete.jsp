@@ -8,11 +8,14 @@ EmployeeBean employee = (EmployeeBean) session.getAttribute("employee");
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="CSS/common/common.css">
+<link rel="stylesheet" href="CSS/formCSS/form.css">
+<link rel="stylesheet" href="CSS/registPageCSS/list_page.css">
 <title>削除確認画面</title>
 </head>
 <body>
 	<h1>以下の従業員情報を削除します。</h1>
-	<table border="1">
+	<table border="1" class="list">
 		<tr>
 			<th>氏名</th>
 			<th>年齢</th>
@@ -25,10 +28,10 @@ EmployeeBean employee = (EmployeeBean) session.getAttribute("employee");
 		</tr>
 	</table>
 	<form action="employeeDelete" method="post">
-		<input type="submit" value="削除">
+		<input type="submit" class="deleteBtn" value="削除">
 	</form>
 	<form action="employeeList" method="get">
-		<input type="submit" value="従業員一覧へ">
+		<input type="submit" class="btn" value="従業員一覧へ">
 	</form>
 </body>
 </html>

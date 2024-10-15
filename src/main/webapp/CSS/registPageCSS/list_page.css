@@ -6,11 +6,11 @@
 
 .list {
 	margin: 0 auto;
+	margin-bottom: 20px;
 	border: 2px green;
 }
-
-.btn_box{
-	margin: 30px;
+.column_name{
+	padding: 0 20px;
 }
 
 .logout_btn{

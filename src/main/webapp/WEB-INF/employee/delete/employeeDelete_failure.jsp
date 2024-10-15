@@ -5,13 +5,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="CSS/common/common.css">
+<link rel="stylesheet" href="CSS/common/result_page.css">
 <title>削除失敗画面</title>
 </head>
 <body>
-	<h1>Delete Error!</h1>
+<div class="main">
+	<h1 class="errorMessage">Delete Error!</h1>
 	<form action ="employeeDelete" method="get">
 	<input type="hidden" name="employeeId" value=<%=employeeId %>>
-	<input type="submit" value="戻る">
+	<input type="submit" class="btn" value="戻る">
 	</form>
+</div>
 </body>
 </html>

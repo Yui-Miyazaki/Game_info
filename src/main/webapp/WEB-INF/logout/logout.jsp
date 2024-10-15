@@ -4,17 +4,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="CSS/common/common.css">
+<link rel="stylesheet" href="CSS/common/result_page.css">
 <title>ログアウト画面</title>
 </head>
 <body>
-<div>
+<div class="main">
        <h1>ログアウトしました</h1>
        <form action="login" method="get">
 			<div>
-				<button type="submit">ログイン画面に戻る</button>
+				<button type="submit" class="btn">ログイン</button>
 		　　</div>
 		</form>
  </div>
-
 </body>
 </html>
