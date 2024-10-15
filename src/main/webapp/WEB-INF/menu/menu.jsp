@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="CSS/common/common.css">
 <link rel="stylesheet" href="CSS/menuCSS/menu.css">
+<link rel="stylesheet" href="CSS/common/btn.css">
 <title>メニュー画面</title>
 </head>
 <body>

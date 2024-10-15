@@ -6,6 +6,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="CSS/common/common.css">
+<link rel="stylesheet" href="CSS/registPageCSS/list_page.css">
+<link rel="stylesheet" href="CSS/common/btn.css">
 <title>在庫削除画面</title>
 </head>
 <body>
@@ -13,10 +16,10 @@
 <h2><%=gameName %>を削除しますか？</h2>
 <form action="stockDelete" method="post">
 <input type="hidden" name="itemCode" value=<%=itemCode %>>
-<input type="submit" value="削除">
+<input type="submit" class="deleteBtn" value="削除"><br><br>
 </form>
 	<form action="stockList" method="get">
-	<input type="submit" value="在庫一覧へ">
+	<input type="submit" class="btn" value="在庫一覧へ">
 	</form>
 </body>
 </html>

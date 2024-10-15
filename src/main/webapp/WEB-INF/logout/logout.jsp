@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="CSS/common/common.css">
 <link rel="stylesheet" href="CSS/common/result_page.css">
+<link rel="stylesheet" href="CSS/common/btn.css">
 <title>ログアウト画面</title>
 </head>
 <body>

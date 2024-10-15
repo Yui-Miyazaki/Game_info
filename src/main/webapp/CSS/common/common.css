@@ -13,9 +13,10 @@ body{
 }
 .selectBox{
 	width: auto;
-	height: 25px;
+	height: 30px;
 	color: limegreen;
 	background-color: #000;
+	border:  2px solid limegreen;
 	
 }
 .successMessage{
@@ -24,31 +25,4 @@ body{
 .errorMessage{
 	color: red;
 	font-weight: lighter;
-}
-.btn{
-	width: 130px;
-	height: 40px;
-	border-radius:10px;
-	background-color: limegreen;
-	color:#000;
-	font-weight:900;
-	border: 6px outset darkgreen;
-}
-.resetBtn{
-	width: 100px;
-	height: 40px;
-	border-radius:10px;
-	background-color:red;
-	border: 6px outset darkred;
-	color:black;
-	font-weight:900;
-}
-.deleteBtn{
-	width: 130px;
-	height: 40px;
-	border-radius:10px;
-	background-color: orange;
-	border: 6px outset darkorange;
-	color:black;
-	font-weight:900;
 }

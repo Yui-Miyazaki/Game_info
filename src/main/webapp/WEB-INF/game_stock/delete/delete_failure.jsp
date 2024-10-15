@@ -10,6 +10,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="CSS/common/error_page.css">
 <link rel="stylesheet" href="CSS/common/common.css">
+<link rel="stylesheet" href="CSS/common/btn.css">
 <title>削除エラー画面</title>
 </head>
 <body>

@@ -10,31 +10,38 @@
 <link rel="stylesheet" href="CSS/common/common.css">
 <link rel="stylesheet" href="CSS/registPageCSS/list_page.css">
 <link rel="stylesheet" href="CSS/common/btn.css">
+<link rel="stylesheet" href="CSS/formCSS/form.css">
 <title>在庫管理一覧画面</title>
 </head>
 <body>
 	<h1>在庫管理一覧</h1>
-	<form class="search_box" action="stockSearch" method="post">
+	<div class="searchForm">
+	<form  action="stockSearch" method="post">
+	<h2>search</h2>
+	<span>商品名</span>
 	<input type="text" class="textBox" name="gameName" placeholder="ゲーム名を入力してください。">
+	<span>メーカー</span>
 	<input type="text" class="textBox" name="maker" placeholder="メーカー名を入力してください。">
-	<select  name="stock"class="textBox">
+	<span>在庫数</span>
+	<select  name="stock"class="selectBox">
 		<%for(int i = 1;i <= 10;i++) {%>
-			<option class="selectBox" value="在庫数">
+			<option  value="在庫数">
 			<%=i %></option>
 		<%} %>
 	</select>
 	<input type="submit" class="btn" value="検索🔍">
 	</form>
+	</div>
 	<table border="1" class="list">
 		<tr>
-			<th>ゲームID</th>
-			<th>ゲーム名</th>
-			<th>メーカー</th>
-			<th>発売日</th>
-			<th>在庫数</th>
-			<th>販売価格</th>
-			<th>人気</th>
-			<th>商品コード</th>
+			<th class="column_name">ゲームID</th>
+			<th class="column_name">ゲーム名</th>
+			<th class="column_name">メーカー</th>
+			<th class="column_name">発売日</th>
+			<th class="column_name">在庫数</th>
+			<th class="column_name">販売価格</th>
+			<th class="column_name">人気</th>
+			<th class="column_name">商品コード</th>
 			<th colspan="2">
 	<form action="stockAdd" method="get">
 		<input type="submit" class="regist_btn" value="新規登録">
@@ -77,7 +84,7 @@
 	</div>
 	<form action="menu" method="get">
 	<input type="submit" class="btn" value="メニュー画面へ">
-	</form>
+	</form><br>
 	<div class="logout_btn">
 	<form action="logout" method="get">
 		<input type="submit" class="resetBtn" value="ログアウト">

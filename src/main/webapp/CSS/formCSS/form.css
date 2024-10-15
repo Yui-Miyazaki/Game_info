@@ -13,3 +13,12 @@
 .item{
 	width:20%;
 }
+
+.searchForm{
+	width: 900px;
+	height: 150px;
+	border: 10px double limegreen;
+	padding: 0px;
+	margin: 0px auto;
+	margin-bottom: 20px;
+}

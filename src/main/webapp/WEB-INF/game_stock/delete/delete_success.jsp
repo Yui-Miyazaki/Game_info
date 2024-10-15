@@ -6,11 +6,12 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="CSS/common/common.css">
 <link rel="stylesheet" href="CSS/common/result_page.css">
+<link rel="stylesheet" href="CSS/common/btn.css">
 <title>Insert title here</title>
 </head>
 <body>
 	<div class="main">
-		<h1 class="successMessage">Success</h1>
+		<h1 class="successMessage">Delete Success!</h1>
 		<form action="stockList" method="get">
 			<input type="submit" class="btn" value="在庫一覧へ">
 		</form>

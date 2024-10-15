@@ -10,6 +10,7 @@ String errorMessage = (String) request.getAttribute("errorMessage");
 <meta charset="UTF-8">
 <link rel="stylesheet" href="CSS/common/common.css">
 <link rel="stylesheet" href="CSS/loginCSS/login.css">
+<link rel="stylesheet" href="CSS/common/btn.css">
 <title>ログイン画面</title>
 </head>
 
@@ -37,6 +38,9 @@ String errorMessage = (String) request.getAttribute("errorMessage");
 					<input type="submit" class="btn" value="Login">
 					<input type="reset" class="resetBtn" value="Reset">
 				</div>
+			</form>
+			<form action="hash" method="post">
+			<input type="submit" value="新規登録">
 			</form>
 		</div>
 	</main>

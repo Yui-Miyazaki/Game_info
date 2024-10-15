@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="CSS/common/common.css">
 <link rel="stylesheet" href="CSS/common/result_page.css">
 <link rel="stylesheet" href="CSS/formCSS/form.css">
+<link rel="stylesheet" href="CSS/common/btn.css">
 <title>在庫追加画面</title>
 </head>
 <body>
@@ -58,7 +59,7 @@
 	</form>
 	</div>
 	<form action="stockList" method="get">
-		<input type="submit" value="在庫一覧へ">
+		<input type="submit" class="btn" value="在庫一覧へ">
 	</form>
 </body>
 </html>
