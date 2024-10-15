@@ -26,7 +26,7 @@ body{
 	font-weight: lighter;
 }
 .btn{
-	width: 100px;
+	width: 130px;
 	height: 40px;
 	border-radius:10px;
 	background-color: limegreen;
@@ -44,7 +44,7 @@ body{
 	font-weight:900;
 }
 .deleteBtn{
-	width: 100px;
+	width: 130px;
 	height: 40px;
 	border-radius:10px;
 	background-color: orange;

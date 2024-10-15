@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="CSS/common/common.css">
 <link rel="stylesheet" href="CSS/registPageCSS/list_page.css">
+<link rel="stylesheet" href="CSS/common/btn.css">
 <title>在庫管理一覧画面</title>
 </head>
 <body>
@@ -34,6 +35,12 @@
 			<th>販売価格</th>
 			<th>人気</th>
 			<th>商品コード</th>
+			<th colspan="2">
+	<form action="stockAdd" method="get">
+		<input type="submit" class="regist_btn" value="新規登録">
+	</form>
+			</th>
+			
 		</tr>
 		<%
 		for (GameBean game : stockList) {
@@ -49,7 +56,7 @@
 			<td><%=game.getItemCode()%></td>
 			<td>
 				<form action="stockUpdate" method="get">
-					<input type="submit" class="btn" value="更新">
+					<input type="submit" class="update_btn" value="更新">
 					<input type="hidden" name="gameName" value=<%=game.getGameName()%>>
 					<input type="hidden" name="itemCode"  value=<%=game.getItemCode()%>>
 				</form>
@@ -67,10 +74,10 @@
 		%>
 	</table>
 	<div class="btn_box">
-	<form action="stockAdd" method="get">
-		<input type="submit" class="btn" value="新規登録">
-	</form>
 	</div>
+	<form action="menu" method="get">
+	<input type="submit" class="btn" value="メニュー画面へ">
+	</form>
 	<div class="logout_btn">
 	<form action="logout" method="get">
 		<input type="submit" class="resetBtn" value="ログアウト">

@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+.update_btn {
+	width: 80px;
+	height: 40px;
+	border-radius: 10px;
+	background-color: limegreen;
+	color: #000;
+	font-weight: 900;
+	border: 6px outset darkgreen;
+}
+
+.resetBtn {
+	width: 130px;
+	height: 40px;
+	border-radius: 10px;
+	background-color: red;
+	border: 6px outset darkred;
+	color: black;
+	font-weight: 900;
+}
+
+.deleteBtn {
+	width: 80px;
+	height: 40px;
+	border-radius: 10px;
+	background-color: orange;
+	border: 6px outset darkorange;
+	color: black;
+	font-weight: 900;
+}
+
+.btn {
+	width: 130px;
+	height: 40px;
+	border-radius: 10px;
+	background-color: limegreen;
+	color: #000;
+	font-weight: 900;
+	border: 6px outset darkgreen;
+}
+.regist_btn {
+	width: 130px;
+	height: 40px;
+	border-radius: 10px;
+	background-color: deepskyblue;
+	color: #000;
+	font-weight: 900;
+	border: 6px outset dodgerblue;
+	}

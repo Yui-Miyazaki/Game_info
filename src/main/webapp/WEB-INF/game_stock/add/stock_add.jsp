@@ -20,7 +20,7 @@
 		<span class="item">メーカー</span> <input type="text" class="textBox"name="maker"><br>
 		</div> 
 		<div class="flexItem">
-		<span class="item">発売日</span> <input type="date" name="releaseDate"><br>
+		<span class="item">発売日</span> <input type="date" class="textBox" name="releaseDate"><br>
 		</div>
 		<div class="flexItem">
 		<span class="item">在庫数</span> <select name="stock" class="selectBox">
@@ -54,7 +54,7 @@
 		<div class="flexItem"> 
 		<span class="item">商品コード</span> <input type="text" class="textBox" name="itemCode"><br>
 		</div>
-		<input type="submit" value="登録">
+		<input type="submit" class="btn" value="登録">
 	</form>
 	</div>
 	<form action="stockList" method="get">
