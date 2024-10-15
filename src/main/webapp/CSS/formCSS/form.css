@@ -1,0 +1,12 @@
+.main{
+	width: 400px;
+	margin:0 auto;
+}
+.flexItem{
+	display: flex;
+	text-align: center;
+	margin-bottom: 10px;
+}
+.item{
+	width:20%;
+}
