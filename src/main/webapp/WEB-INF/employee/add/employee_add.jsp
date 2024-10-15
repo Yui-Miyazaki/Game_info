@@ -39,11 +39,11 @@ List<PostBean> postList = (List) session.getAttribute("postList");
 			<%}%>
 		</select><br>
 		</div> 
-		<input type="submit" value="登録">
+		<input type="submit" class="btn" value="登録">
 	</form>
 	</div>
 	<form action="employeeList" method="get">
-		<input type="submit" value="従業員一覧へ">
+		<input type="submit" class="btn" value="従業員一覧へ">
 	</form>
 </body>
 </html>
