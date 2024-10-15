@@ -39,7 +39,7 @@ public class StockUpdateServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute("gameName", gameName);
 		session.setAttribute("itemCode", itemCode);
-		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/update/stock_update.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/game_stock/update/stock_update.jsp");
 		rd.forward(request, response);
 	}
 
@@ -48,7 +48,7 @@ public class StockUpdateServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String url = "WEB-INF/update/update_failure.jsp";
+		String url = "WEB-INF/game_stock/update/update_failure.jsp";
 		String strStock = request.getParameter("stock");
 		String strPrice = request.getParameter("price");
 		String strRanking = request.getParameter("ranking");
@@ -63,7 +63,7 @@ public class StockUpdateServlet extends HttpServlet {
 			int updateCount = dao.updateStock(stock,price,ranking,itemCode);
 			
 			if(updateCount >= 1) {
-				url = "WEB-INF/update/update_success.jsp";
+				url = "WEB-INF/game_stock/update/update_success.jsp";
 			}
 		} catch (ClassNotFoundException | SQLException | NumberFormatException e) {
 

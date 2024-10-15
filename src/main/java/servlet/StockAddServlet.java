@@ -46,7 +46,7 @@ public class StockAddServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 
-		String url = "WEB-INF/add/add_failure.jsp";
+		String url = "WEB-INF/game_stock/add/add_failure.jsp";
 
 		String gameName = request.getParameter("gameName");
 		String maker = request.getParameter("maker");
@@ -78,7 +78,7 @@ public class StockAddServlet extends HttpServlet {
 			
 
 			if (registCount > 0) {
-				url = "WEB-INF/add/add_success.jsp";
+				url = "WEB-INF/game_stock/add/add_success.jsp";
 			}
 		} catch (IllegalArgumentException | ClassNotFoundException | SQLException e) {
 

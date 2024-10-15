@@ -4,12 +4,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
+ <link rel="stylesheet" href="CSS/common/common.css">
+  <link rel="stylesheet" href="CSS/common/result_page.css">
 <title>追加成功画面</title>
 </head>
 <body>
-<h1>追加完了</h1>
+<div class="main">
+<h1 class="successMessage">Success</h1>
 <form action="stockList" method="get">
-<input type="submit" value="在庫一覧へ">
+<input type="submit" class="btn" value="在庫一覧へ">
 </form>
+</div>
 </body>
 </html>

@@ -5,7 +5,7 @@
 
         <head>
             <meta charset="UTF-8">
-            <link rel="stylesheet" href="CSS/common/error_page.css">
+            <link rel="stylesheet" href="CSS/common/result_page.css">
             <link rel="stylesheet" href="CSS/common/common.css">
             <title>追加エラー画面</title>
         </head>

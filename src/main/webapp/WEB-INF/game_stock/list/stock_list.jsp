@@ -7,6 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="CSS/common/common.css">
 <title>在庫管理一覧画面</title>
 </head>
 <body>
@@ -36,14 +37,14 @@
 			<td><%=game.getItemCode()%></td>
 			<td>
 				<form action="stockUpdate" method="get">
-					<input type="submit" value="更新">
+					<input type="submit" class="btn" value="更新">
 					<input type="hidden" name="gameName" value=<%=game.getGameName()%>>
 					<input type="hidden" name="itemCode"  value=<%=game.getItemCode()%>>
 				</form>
 			</td>
 			<td>
 				<form action="stockDelete" method="get">
-					<input type="submit" value="削除">
+					<input type="submit" class="deleteBtn" value="削除">
 					<input type="hidden" name="gameName" value=<%=game.getGameName()%>>
 					<input type="hidden" name="itemCode"  value=<%=game.getItemCode()%>>
 				</form>
@@ -54,20 +55,20 @@
 		%>
 	</table>
 	<form action="stockAdd" method="get">
-		<input type="submit" value="追加">
+		<input type="submit" class="btn" value="追加">
 	</form>
 	<form action="logout" method="get">
-		<input type="submit" value="ログアウト">
+		<input type="submit" class="resetBtn" value="ログアウト">
 	</form>
 	<form action="stockSearch" method="post">
-	<input type="text" name="gameName" placeholder="ゲーム名を入力してください。">
-	<input type="text" name="maker" placeholder="メーカー名を入力してください。">
-	<select name="stock">
+	<input type="text" class="textBox" name="gameName" placeholder="ゲーム名を入力してください。">
+	<input type="text" class="textBox" name="maker" placeholder="メーカー名を入力してください。">
+	<select  name="stock">
 		<%for(int i = 1;i <= 10;i++) {%>
-			<option><%=i %></option>
+			<option class="selectBox" value=""><%=i %></option>
 		<%} %>
 	</select>
-	<input type="submit" value="🔍">
+	<input type="submit" class="btn" value="検索🔍">
 	</form>
 </body>
 </html>

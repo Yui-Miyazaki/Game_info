@@ -35,7 +35,7 @@ public class StockListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String url = "WEB-INF/list/stock_list.jsp";
+		String url = "WEB-INF/game_stock/list/stock_list.jsp";
 		StockDAO dao = new StockDAO();
 		try {
 			List<GameBean> stockList = dao.getStockList();
