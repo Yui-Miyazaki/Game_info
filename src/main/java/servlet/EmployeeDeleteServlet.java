@@ -58,14 +58,14 @@ public class EmployeeDeleteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String url = "WEB-INF/employee/delete/delete_failure.jsp";
+		String url = "WEB-INF/employee/delete/employeeDelete_failure.jsp";
 		HttpSession session = request.getSession();
 		int employeeId = (int) session.getAttribute("employeeId");
 		EmployeeDAO dao = new EmployeeDAO();
 		try {
 			int deleteCount = dao.employeeDelete(employeeId);
 			if (deleteCount > 0) {
-				url = "WEB-INF/employee/delete/delete_succses.jsp";
+				url = "WEB-INF/employee/delete/employeeDelete_succses.jsp";
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();

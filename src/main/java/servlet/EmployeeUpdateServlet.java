@@ -63,7 +63,7 @@ public class EmployeeUpdateServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String url = "WEB-INF/employee/update/update_failure.jsp";
+		String url = "WEB-INF/employee/update/employeeUpdate_failure.jsp";
 		HttpSession session = request.getSession();
 		int employeeId = (int) session.getAttribute("employeeId");
 		String name = request.getParameter("name");
@@ -74,7 +74,7 @@ public class EmployeeUpdateServlet extends HttpServlet {
 			int age = Integer.parseInt(strAge);
 			int updateCount = dao.employeeUpdate(name, age, postCode, employeeId);
 			if (updateCount > 0) {
-				url = "WEB-INF/employee/update/update_success.jsp";
+				url = "WEB-INF/employee/update/employeeUpdate_success.jsp";
 			}
 		} catch (ClassNotFoundException | SQLException | NumberFormatException e) {
 			e.printStackTrace();

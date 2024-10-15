@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>登録失敗</h1>
+<h1>Add Error!</h1>
+<form action="employeeAdd" method="get">
+	<input type="submit" value="戻る">
+</form>
 </body>
 </html>
