@@ -52,19 +52,24 @@ public class LoginServlet extends HttpServlet {
 		HashDAO dao = new HashDAO();
 		try {
 			String salt = dao.getSalt(loginId);
-			HashSolt hashSalt = new HashSolt();
-			String hashPass = hashSalt.getHashPass(salt, password);
-			
-			LoginDAO loginDao = new LoginDAO();
-			int loginCheckCount = loginDao.loginCheck(loginId, hashPass);
-			System.out.println(loginCheckCount);
-			
-			if(loginCheckCount < 1) {
-				url = "login.jsp";
-				String errorMessage = "ログイン認証に失敗しました。";
-				request.setAttribute("errorMessage", errorMessage);
+			if(salt != null) {
+				
+				HashSolt hashSalt = new HashSolt();
+				String hashPass = hashSalt.getHashPass(salt, password);
+				
+				LoginDAO loginDao = new LoginDAO();
+				int loginCheckCount = loginDao.loginCheck(loginId, hashPass);
+				System.out.println(loginCheckCount);
+				
+				if(loginCheckCount < 1) {
+					url = "login.jsp";
+					String errorMessage = "ログイン認証に失敗しました。";
+					request.setAttribute("errorMessage", errorMessage);
+				}
+				
+			}else {
+				url ="login.jsp";
 			}
-
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
