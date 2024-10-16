@@ -1,6 +1,6 @@
 $(document).ready(function() {
     // ヘッダーアイコンのクリックイベント
-    $('.headerIcon').on('click', function() {
+    $('.header__headerIcon').on('click', function() {
         $('#customAlert').show();
     });
 

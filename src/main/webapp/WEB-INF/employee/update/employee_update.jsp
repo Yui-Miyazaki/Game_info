@@ -19,6 +19,7 @@ EmployeeBean employee = (EmployeeBean) session.getAttribute("employee");
 <title>更新画面</title>
 </head>
 <body>
+<jsp:include page="../../header/header.jsp" />
 	<h1>更新する従業員</h1>
 	<table border="1" class="list">
 		<tr>

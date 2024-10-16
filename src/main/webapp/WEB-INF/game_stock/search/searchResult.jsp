@@ -20,6 +20,7 @@ String error = (String) request.getAttribute("error");
 <title>検索結果画面</title>
 </head>
 <body>
+<jsp:include page="../../header/header.jsp" />
 	<%
 	if (error != null) {
 	%>

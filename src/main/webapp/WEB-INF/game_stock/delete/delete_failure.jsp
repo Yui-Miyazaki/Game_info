@@ -16,6 +16,7 @@ String itemCode = (String) session.getAttribute("itemCode");
 <title>削除エラー画面</title>
 </head>
 <body>
+<jsp:include page="../../header/header.jsp" />
 	<div class="main">
 		<h1 class="errorMessage">Delete Error!</h1>
 		<form id="stockDeleteForm" action="stockDelete" method="get">

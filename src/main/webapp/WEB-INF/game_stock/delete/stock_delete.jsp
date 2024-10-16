@@ -17,6 +17,7 @@ String itemCode = (String) session.getAttribute("itemCode");
 <title>在庫削除画面</title>
 </head>
 <body>
+<jsp:include page="../../header/header.jsp" />
 	<h1>在庫削除画面</h1>
 	<h2><%=gameName%>を削除しますか？
 	</h2>

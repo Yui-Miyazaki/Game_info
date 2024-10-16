@@ -16,6 +16,7 @@ List<PostBean> postList = (List) session.getAttribute("postList");
 <title>従業員追加画面</title>
 </head>
 <body>
+<jsp:include page="../../header/header.jsp" />
 	<h1>従業員追加画面</h1>
 	<div class="main">
 	<h2>登録情報入力</h2>

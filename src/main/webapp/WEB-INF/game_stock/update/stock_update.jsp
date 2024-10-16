@@ -16,6 +16,7 @@ String itemCode = (String) session.getAttribute("itemCode");
 <title>在庫更新画面</title>
 </head>
 <body>
+<jsp:include page="../../header/header.jsp" />
 	<h1>在庫更新画面</h1>
 	<div class="main">
 		<h2><%=gameName%></h2>

@@ -16,6 +16,7 @@ List<EmployeeBean> employeeList = (List) session.getAttribute("employeeList");
 <title>従業員一覧</title>
 </head>
 <body>
+	<jsp:include page="../../header/header.jsp" />
 	<h1>従業員一覧</h1>
 	<table border="1" class="list">
 		<tr>

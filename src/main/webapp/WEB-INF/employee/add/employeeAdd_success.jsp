@@ -11,6 +11,7 @@
 <title>登録成功画面</title>
 </head>
 <body>
+<jsp:include page="../../header/header.jsp" />
 	<div class="main">
 		<h1>Add Succses!</h1>
 		<form id="employeeListForm" action="employeeList" method="get">

@@ -11,6 +11,7 @@
 <title>削除完了画面</title>
 </head>
 <body>
+<jsp:include page="../../header/header.jsp" />
 	<div class="main">
 		<h1 class="successMessage">Delete Success!</h1>
 		<form id="stockListForm" action="stockList" method="get">
