@@ -33,7 +33,7 @@ public class HashServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/login_regist/loginRegist_succses.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("login_register.jsp");
 		rd.forward(request, response);
 	}
 
