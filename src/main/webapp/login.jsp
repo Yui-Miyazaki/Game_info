@@ -14,7 +14,6 @@ String errorMessage = (String) request.getAttribute("errorMessage");
 <link rel="stylesheet" href="CSS/common/btn.css">
 <title>ログイン画面</title>
 </head>
-
 <body>
 	<header>
 	<h1>Login</h1>

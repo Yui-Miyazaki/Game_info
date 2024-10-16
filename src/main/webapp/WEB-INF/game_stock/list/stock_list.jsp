@@ -15,6 +15,7 @@
 <title>在庫管理一覧画面</title>
 </head>
 <body>
+	<jsp:include page="../../header/header.jsp" />
 	<h1>在庫管理一覧</h1>
 	<div class="searchForm">
 	<form id="searchForm" action="stockSearch" method="post">
