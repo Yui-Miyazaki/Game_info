@@ -10,8 +10,7 @@
 	border: 10px double limegreen;
 	border-color: limegreen;
 	overflow-y: scroll;
-	scrollbar-color: midnightblue black;
-	scrollbar-width: none;
+	scrollbar-color: grey black;
 	
 
 }
