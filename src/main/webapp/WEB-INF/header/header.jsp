@@ -22,7 +22,7 @@
 				<input type="button" class="resetBtn" id="logoutBtn" value="ログアウト"
 					onclick="audio('logoutForm')">
 			</form>
-			<button id="closeModal" class="closeBtn">✕</button>
+			<button id="closeModal" class="closeBtn">×</button>
 		</div>
 	</div>
 </header>
