@@ -1,22 +1,36 @@
 <%@page import="model.entity.GameBean"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%List<GameBean> searchResultList = (List)request.getAttribute("searchResultList"); %>
-    <%String error = (String)request.getAttribute("error");%>
+	pageEncoding="UTF-8"%>
+<%
+List<GameBean> searchResultList = (List) request.getAttribute("searchResultList");
+%>
+<%
+String error = (String) request.getAttribute("error");
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<link rel="stylesheet" href="CSS/common/common.css">
+<link rel="stylesheet" href="CSS/registPageCSS/list_page.css">
+<link rel="stylesheet" href="CSS/common/btn.css">
+<link rel="stylesheet" href="CSS/formCSS/form.css">
+<title>検索結果画面</title>
 </head>
 <body>
-<%if(error != null){ %>
-<h1><%=error %></h1>
-<%} %>
-<%if(!searchResultList.isEmpty()){ %>
-<h1>検索結果</h1>
-<table border="1">
+	<%
+	if (error != null) {
+	%>
+	<h1><%=error%></h1>
+	<%
+	}
+	%>
+	<%
+	if (!searchResultList.isEmpty()) {
+	%>
+	<h1>検索結果</h1>
+	<table border="1" class="list">
 		<tr>
 			<th>ゲームID</th>
 			<th>ゲーム名</th>
@@ -28,7 +42,7 @@
 			<th>商品コード</th>
 		</tr>
 		<%
-		for (GameBean game : searchResultList ) {
+		for (GameBean game : searchResultList) {
 		%>
 		<tr>
 			<td><%=game.getGameId()%></td>
@@ -39,9 +53,16 @@
 			<td><%=game.getPrice()%></td>
 			<td><%=game.getRanking()%></td>
 			<td><%=game.getItemCode()%></td>
-			</tr>
-			<%} %>
-			</table>
-			<%} %>
+		</tr>
+		<%
+		}
+		%>
+	</table>
+	<%
+	}
+	%>
+	<form action="stockList" method="get">
+		<input type="submit" class="btn" value="在庫一覧へ">
+	</form>
 </body>
 </html>

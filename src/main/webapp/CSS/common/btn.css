@@ -39,6 +39,7 @@
 	font-weight: 900;
 	border: 6px outset darkgreen;
 }
+
 .regist_btn {
 	width: 130px;
 	height: 40px;
@@ -47,4 +48,25 @@
 	color: #000;
 	font-weight: 900;
 	border: 6px outset dodgerblue;
-	}
+}
+
+.btn:hover,
+.update_btn:hover {
+	background-color: #008000;
+	color: white;
+}
+
+.regist_btn:hover {
+	background-color: steelblue;
+	color: white;
+}
+
+.deleteBtn:hover {
+	background-color: orangered;
+	color: white;
+}
+
+.resetBtn:hover {
+	background-color: crimson;
+	color: white;
+}

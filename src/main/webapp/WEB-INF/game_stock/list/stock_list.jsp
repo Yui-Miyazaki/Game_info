@@ -25,8 +25,7 @@
 	<span>在庫数</span>
 	<select  name="stock"class="selectBox">
 		<%for(int i = 1;i <= 10;i++) {%>
-			<option  value="在庫数">
-			<%=i %></option>
+			<option><%=i %></option>
 		<%} %>
 	</select>
 	<input type="submit" class="btn" value="検索🔍">
