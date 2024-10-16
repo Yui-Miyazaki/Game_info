@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="javaScript/common.js"></script>
 <link rel="stylesheet" href="CSS/common/common.css">
 <link rel="stylesheet" href="CSS/registPageCSS/list_page.css">
 <link rel="stylesheet" href="CSS/common/btn.css">
@@ -11,8 +12,11 @@
 </head>
 <body>
 	<h1>Update Success!</h1>
-	<form action="stockList" method="get">
-		<input type="submit" class="btn" value="在庫一覧へ">
+	<form id="stockListForm" action="stockList" method="get">
+		<input type="button" class="btn" value="在庫一覧へ" onclick="audio('stockListForm')">
 	</form>
+	<audio id="btnClick_audio">
+		<source src="sounds/PC-Mouse05-1.mp3" type="audio/mp3">
+	</audio>
 </body>
 </html>

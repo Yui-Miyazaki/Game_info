@@ -44,6 +44,7 @@ public class EmployeeDeleteServlet extends HttpServlet {
 			if (employee != null) {
 				session.setAttribute("employee", employee);
 			}
+			System.out.println(employeeId);
 			session.setAttribute("employeeId", employeeId);
 		} catch (ClassNotFoundException | SQLException e) {
 		}

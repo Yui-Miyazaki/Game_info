@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="javaScript/common.js"></script>
 <link rel="stylesheet" href="CSS/common/common.css">
 <link rel="stylesheet" href="CSS/common/btn.css">
 <link rel="stylesheet" href="CSS/common/result_page.css">
@@ -12,9 +13,12 @@
 <body>
 <div class="main">
 <h1 class="errorMessage">Add Error!</h1>
-<form action="employeeAdd" method="get">
-	<input type="submit" class="btn" value="戻る">
+<form id="employeeAddForm" action="employeeAdd" method="get">
+	<input type="button" class="btn" value="戻る" onclick="audio('employeeAddForm')">
 </form>
 </div>
+<audio id="btnClick_audio">
+		<source src="sounds/PC-Mouse05-1.mp3" type="audio/mp3">
+</audio>
 </body>
 </html>

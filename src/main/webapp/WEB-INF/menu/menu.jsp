@@ -18,20 +18,20 @@
 	</header>
 	<main>
 		<div class="main">
-			<form id="form" action="stockList" method="get">
+			<form id="stockListForm" action="stockList" method="get">
 				<div>
-					<button class="btn" type="button" onclick="audio()">在庫管理一覧</button>
+					<button class="btn" type="button" onclick="audio('stockListForm')">在庫管理一覧</button>
 				</div>
 			</form>
-			<form action="employeeList" method="get">
+			<form id="employeeForm" action="employeeList" method="get">
 				<div>
-					<button class="btn" type="submit">従業員一覧</button>
+					<button class="btn" type="button" onclick="audio('employeeForm')">従業員一覧</button>
 				</div>
 			</form>
 		</div>
-		<form action="logout" method="get">
+		<form id="logoutForm" action="logout" method="get">
 			<div>
-				<button class="resetBtn"  type="submit">ログアウト</button>
+				<button class="resetBtn"  type="button" onclick="audio('logoutForm')">ログアウト</button>
 			</div>
 		</form>
 	</main>

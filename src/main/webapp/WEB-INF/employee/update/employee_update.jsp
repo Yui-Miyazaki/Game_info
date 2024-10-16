@@ -11,6 +11,7 @@ EmployeeBean employee = (EmployeeBean) session.getAttribute("employee");
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="javaScript/common.js"></script>
 <link rel="stylesheet" href="CSS/common/common.css">
 <link rel="stylesheet" href="CSS/common/btn.css">
 <link rel="stylesheet" href="CSS/formCSS/form.css">
@@ -34,7 +35,7 @@ EmployeeBean employee = (EmployeeBean) session.getAttribute("employee");
 	<main>
 		<div class="main">
 		<h2>更新情報入力</h2>
-			<form action="employeeUpdate" method="post">
+			<form id="employeeUpdateForm" action="employeeUpdate" method="post">
 				<div class="flexItem">
 					<span class="item">氏名</span> 
 					<input type="text" class="textBox" name="name"><br>
@@ -67,12 +68,15 @@ EmployeeBean employee = (EmployeeBean) session.getAttribute("employee");
 						%>
 					</select><br>
 				</div>
-				<input type="submit" class="btn" value="更新">
+				<input type="button" class="btn" value="更新" onclick="audio('employeeUpdateForm')">
 			</form>
 		</div>
-		<form action="employeeList" method="get">
-			<input type="submit" class="btn" value="従業員一覧へ">
-		</form>
+		<form id="employeeListForm" action="employeeList" method="get">
+		<input type="button" class="btn" value="従業員一覧へ" onclick="audio('employeeListForm')">
+	</form>
+	<audio id="btnClick_audio">
+		<source src="sounds/PC-Mouse05-1.mp3" type="audio/mp3">
+	</audio>
 
 	</main>
 </body>

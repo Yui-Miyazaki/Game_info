@@ -1,7 +1,7 @@
-function audio() {
+function audio(formId) {
     document.getElementById('btnClick_audio').currentTime = 0; 
     document.getElementById('btnClick_audio').play();
     setTimeout(function() {
-                document.getElementById("form").submit();
-    },180);
+                document.getElementById(formId).submit();
+    },250);
 }

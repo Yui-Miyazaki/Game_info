@@ -9,6 +9,7 @@ List<PostBean> postList = (List) session.getAttribute("postList");
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="javaScript/common.js"></script>
 <link rel="stylesheet" href="CSS/common/common.css">
 <link rel="stylesheet" href="CSS/common/btn.css">
 <link rel="stylesheet" href="CSS/formCSS/form.css">
@@ -18,7 +19,7 @@ List<PostBean> postList = (List) session.getAttribute("postList");
 	<h1>従業員追加画面</h1>
 	<div class="main">
 	<h2>登録情報入力</h2>
-	<form action="employeeAdd" method="post">
+	<form id="employeeAddForm" action="employeeAdd" method="post">
 		<div class="flexItem">
 			<span class="item">氏名</span> <input type="text" class="textBox" name="name"><br>
 		</div>
@@ -41,11 +42,14 @@ List<PostBean> postList = (List) session.getAttribute("postList");
 			<%}%>
 		</select><br>
 		</div> 
-		<input type="submit" class="btn" value="登録">
+		<input type="button" class="btn" value="登録" onclick="audio('employeeAddForm')">
 	</form>
 	</div>
-	<form action="employeeList" method="get">
-		<input type="submit" class="btn" value="従業員一覧へ">
+	<form id="employeeListForm" action="employeeList" method="get">
+		<input type="button" class="btn" value="従業員一覧へ" onclick="audio('employeeListForm')">
 	</form>
+	<audio id="btnClick_audio">
+		<source src="sounds/PC-Mouse05-1.mp3" type="audio/mp3">
+	</audio>
 </body>
 </html>

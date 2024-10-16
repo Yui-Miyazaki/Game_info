@@ -8,6 +8,7 @@ EmployeeBean employee = (EmployeeBean) session.getAttribute("employee");
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="javaScript/common.js"></script>
 <link rel="stylesheet" href="CSS/common/common.css">
 <link rel="stylesheet" href="CSS/formCSS/form.css">
 <link rel="stylesheet" href="CSS/common/btn.css">
@@ -28,11 +29,14 @@ EmployeeBean employee = (EmployeeBean) session.getAttribute("employee");
 			<td><%=employee.getPostName()%></td>
 		</tr>
 	</table>
-	<form action="employeeDelete" method="post">
-		<input type="submit" class="deleteBtn" value="削除">
+	<form id="employeeDeleteForm" action="employeeDelete" method="post">
+		<input type="button" class="deleteBtn" value="削除" onclick="audio('employeeDeleteForm')">
 	</form><br>
-	<form action="employeeList" method="get">
-		<input type="submit" class="btn" value="従業員一覧へ">
+	<form id="employeeListForm" action="employeeList" method="get">
+		<input type="button" class="btn" value="従業員一覧へ" onclick="audio('employeeListForm')">
 	</form>
+	<audio id="btnClick_audio">
+		<source src="sounds/PC-Mouse05-1.mp3" type="audio/mp3">
+	</audio>
 </body>
 </html>

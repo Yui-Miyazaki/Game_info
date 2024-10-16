@@ -7,6 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="javaScript/common.js"></script>
 <link rel="stylesheet" href="CSS/common/common.css">
 <link rel="stylesheet" href="CSS/registPageCSS/list_page.css">
 <link rel="stylesheet" href="CSS/common/btn.css">
@@ -16,7 +17,7 @@
 <body>
 	<h1>在庫管理一覧</h1>
 	<div class="searchForm">
-	<form  action="stockSearch" method="post">
+	<form id="searchForm" action="stockSearch" method="post">
 	<h2>search</h2>
 	<span>商品名</span>
 	<input type="text" class="textBox" name="gameName" placeholder="ゲーム名を入力してください。">
@@ -28,7 +29,7 @@
 			<option><%=i %></option>
 		<%} %>
 	</select>
-	<input type="submit" class="btn" value="検索🔍">
+	<input type="button" class="btn" value="検索🔍" onclick="audio('searchForm')">
 	</form>
 	</div>
 	<table border="1" class="list">
@@ -42,8 +43,8 @@
 			<th class="column_name">人気</th>
 			<th class="column_name">商品コード</th>
 			<th colspan="2">
-	<form action="stockAdd" method="get">
-		<input type="submit" class="regist_btn" value="新規登録">
+	<form id="stockAddForm" action="stockAdd" method="get">
+		<input type="button" class="regist_btn" value="新規登録" onclick="audio('stockAddForm')">
 	</form>
 			</th>
 			
@@ -61,15 +62,15 @@
 			<td><%=game.getRanking()%></td>
 			<td><%=game.getItemCode()%></td>
 			<td>
-				<form action="stockUpdate" method="get">
-					<input type="submit" class="update_btn" value="更新">
+				<form id="stockUpdateForm_<%=game.getGameId() %>" action="stockUpdate" method="get">
+					<input type="button" class="update_btn" value="更新" onclick="audio('stockUpdateForm_<%=game.getGameId() %>')">
 					<input type="hidden" name="gameName" value=<%=game.getGameName()%>>
 					<input type="hidden" name="itemCode"  value=<%=game.getItemCode()%>>
 				</form>
 			</td>
 			<td>
-				<form action="stockDelete" method="get">
-					<input type="submit" class="deleteBtn" value="削除">
+				<form id="stockDeleteForm <%=game.getGameId() %>" action="stockDelete" method="get">
+					<input type="button" class="deleteBtn" value="削除" onclick="audio('stockDeleteForm <%=game.getGameId() %>')">
 					<input type="hidden" name="gameName" value=<%=game.getGameName()%>>
 					<input type="hidden" name="itemCode"  value=<%=game.getItemCode()%>>
 				</form>
@@ -81,13 +82,16 @@
 	</table>
 	<div class="btn_box">
 	</div>
-	<form action="menu" method="get">
-	<input type="submit" class="btn" value="メニュー画面へ">
+	<form id="menuForm" action="menu" method="get">
+	<input type="button" class="btn" value="メニュー画面へ" onclick="audio('menuForm')">
 	</form><br>
 	<div class="logout_btn">
-	<form action="logout" method="get">
-		<input type="submit" class="resetBtn" value="ログアウト">
+	<form id="logoutForm" action="logout" method="get">
+		<input type="button" class="resetBtn" value="ログアウト" onclick="audio('logoutForm')">
 	</form>
 	</div>
+	<audio id="btnClick_audio">
+		<source src="sounds/PC-Mouse05-1.mp3" type="audio/mp3">
+	</audio>
 </body>
 </html>
