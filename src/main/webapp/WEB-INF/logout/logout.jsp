@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="javaScript/common.js"></script>
 <link rel="stylesheet" href="CSS/common/common.css">
 <link rel="stylesheet" href="CSS/common/result_page.css">
 <link rel="stylesheet" href="CSS/common/btn.css">
@@ -12,11 +13,14 @@
 <body>
 <div class="main">
        <h1>ログアウトしました</h1>
-       <form action="login" method="get">
+       <form id="loginForm" action="login" method="get">
 			<div>
-				<button type="submit" class="btn">ログイン</button>
-		　　</div>
+				<button type="button" class="btn" onclick="audio('loginForm')">ログイン</button>
+		    </div>
 		</form>
  </div>
+ <audio id="btnClick_audio">
+		<source src="sounds/PC-Mouse05-1.mp3" type="audio/mp3">
+	</audio>
 </body>
 </html>

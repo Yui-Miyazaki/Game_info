@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.dao.HashDAO;
 import model.dao.LoginDAO;
+import model.utirity.HashSolt;
 
 /**
  * Servlet implementation class LoginServlet
@@ -44,13 +46,20 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String url = "WEB-INF/menu/menu.jsp";
-		String loginId = request.getParameter("id");
-		String password = request.getParameter("pass");
-		System.out.println(loginId + password);
-		LoginDAO dao = new LoginDAO();
+		String loginId = request.getParameter("loginId");
+		String password = request.getParameter("password");
+		
+		HashDAO dao = new HashDAO();
 		try {
-			int loginCheckCount = dao.loginCheck(loginId, password);
-			if (loginCheckCount < 1) {
+			String salt = dao.getSalt(loginId);
+			HashSolt hashSalt = new HashSolt();
+			String hashPass = hashSalt.getHashPass(salt, password);
+			
+			LoginDAO loginDao = new LoginDAO();
+			int loginCheckCount = loginDao.loginCheck(loginId, hashPass);
+			System.out.println(loginCheckCount);
+			
+			if(loginCheckCount < 1) {
 				url = "login.jsp";
 				String errorMessage = "ログイン認証に失敗しました。";
 				request.setAttribute("errorMessage", errorMessage);

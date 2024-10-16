@@ -8,6 +8,7 @@ String errorMessage = (String) request.getAttribute("errorMessage");
 
 <head>
 <meta charset="UTF-8">
+<script src="javaScript/common.js"></script>
 <link rel="stylesheet" href="CSS/common/common.css">
 <link rel="stylesheet" href="CSS/loginCSS/login.css">
 <link rel="stylesheet" href="CSS/common/btn.css">
@@ -25,25 +26,28 @@ String errorMessage = (String) request.getAttribute("errorMessage");
 	</div>
 	<main>
 		<div class="main">
-			<form action="login" method="post">
+			<form  id="loginForm"action="login" method="post">
 				<div>
 					<label for="title">LoginID</label><br> 
-					<input type="text"  class="textBox" name="id" id="title">
+					<input type="text"  class="textBox" name="loginId" id="title">
 				</div>
 				<div>
 					<label for="password">Password</label><br> 
-					<input type="password"class="textBox" name="pass" id="title">
+					<input type="password"class="textBox" name="password" id="title">
 				</div>
 				<div>
-					<input type="submit" class="btn" value="Login">
-					<input type="reset" class="resetBtn" value="Reset">
+					<input type="button" class="btn" value="Login" onclick="audio('loginForm')">
+					<input type="reset" class="resetBtn" value="Reset" >
 				</div>
 			</form>
-			<form action="hash" method="post">
-			<input type="submit" value="新規登録">
-			</form>
 		</div>
+			<form  id="loginRegisterForm" action="hash" method="get">
+			<input type="button" class="btn" value="新規登録" onclick="audio('loginRegisterForm')">
+			</form>
 	</main>
+	<audio id="btnClick_audio">
+		<source src="sounds/PC-Mouse05-1.mp3" type="audio/mp3">
+	</audio>
 </body>
 
 </html>
