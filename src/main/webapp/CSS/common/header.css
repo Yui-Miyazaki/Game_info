@@ -41,8 +41,12 @@
 	right: 0px;
 	cursor: pointer;
 	color: black;
+	border-radius: 5px;
 }
-
+.closeBtn:hover {
+    background-color: dimgray; /* hover時に背景色を変更 */
+    color: white; /* 文字色を変更 */
+}
 .header__headerIcon {
 	height: 50px;
 }
