@@ -1,9 +1,10 @@
 @charset "UTF-8";
-body{
+html,body{
 	text-align: center;
 	background-color:black;
 	color: limegreen;
 	font-family: Arial;
+	overflow: hidden;
 }
 .textBox{
 	height: 25px;

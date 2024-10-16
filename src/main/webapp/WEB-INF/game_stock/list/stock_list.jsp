@@ -32,6 +32,7 @@
 	<input type="button" class="btn" value="検索🔍" onclick="audio('searchForm')">
 	</form>
 	</div>
+	<div>
 	<table border="1" class="list">
 		<tr>
 			<th class="column_name">ゲームID</th>
@@ -42,10 +43,12 @@
 			<th class="column_name">販売価格</th>
 			<th class="column_name">人気</th>
 			<th class="column_name">商品コード</th>
-			<th colspan="2">
+			<th colspan="2" class="column_name">
+	<div class="colum_name">
 	<form id="stockAddForm" action="stockAdd" method="get">
 		<input type="button" class="regist_btn" value="新規登録" onclick="audio('stockAddForm')">
 	</form>
+	</div>
 			</th>
 			
 		</tr>
@@ -80,6 +83,7 @@
 		}
 		%>
 	</table>
+	</div>
 	<div class="btn_box">
 	</div>
 	<form id="menuForm" action="menu" method="get">
