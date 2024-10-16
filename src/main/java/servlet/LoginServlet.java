@@ -69,6 +69,8 @@ public class LoginServlet extends HttpServlet {
 				
 			}else {
 				url ="login.jsp";
+				String errorMessage = "ユーザーが登録されていません。";
+				request.setAttribute("errorMessage", errorMessage);
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
