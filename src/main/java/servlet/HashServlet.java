@@ -33,7 +33,7 @@ public class HashServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		RequestDispatcher rd = request.getRequestDispatcher("login_register.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/login_regist/login_register.jsp");
 		rd.forward(request, response);
 	}
 
@@ -42,7 +42,7 @@ public class HashServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String url = "WEB-INF/login_regist/loginRegist_succses.jsp";
+		String url = "WEB-INF/login_regist/login_register.jsp";
 		
 		String loginId = request.getParameter("id");
 		String password = request.getParameter("pass");
@@ -57,15 +57,14 @@ public class HashServlet extends HttpServlet {
 		HashDAO dao = new HashDAO();
 		try {
 			int registHashCount = dao.registHash(loginId, password, salt, hashPass);
-			if(registHashCount < 1) {
-				url = "WEB-INF/login_regist/login_register.jsp";
-				String errorMessage = "登録に失敗しました。";
-				request.setAttribute("errorMessage", errorMessage);
-			}else {
+			if(registHashCount > 0) {
+				System.out.println(registHashCount);
+				url = "WEB-INF/login_regist/loginRegist_succses.jsp";
 				request.setAttribute("loginId",loginId );
 			}
 		} catch (ClassNotFoundException | SQLException e) {
-			
+			String errorMessage = "登録に失敗しました。";
+			request.setAttribute("errorMessage", errorMessage);
 			e.printStackTrace();
 		}
 		RequestDispatcher rd = request.getRequestDispatcher(url);

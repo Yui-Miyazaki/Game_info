@@ -16,9 +16,11 @@
 </head>
 <body>
 	<h1>新規登録</h1>
+	<div class="errorMessage">
 	<% if (errorMessage != null) {%>
 	<%=errorMessage%>
 	<% }%>
+	</div>
 	<div class="main">
 	<form id="loginRegisterForm" action="hash" method="post">
 	    <div class="flexItem">
