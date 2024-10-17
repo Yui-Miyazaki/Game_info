@@ -36,7 +36,8 @@ public class EmployeeListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String url = "WEB-INF/employee/list/employee_List.jsp";
+		String url = "WEB-INF/employee/list/employee_list.jsp";
+		System.out.println("t");
 		EmployeeDAO dao = new EmployeeDAO();
 		try {
 			List<EmployeeBean> employeeList = dao.getEmployeeList();

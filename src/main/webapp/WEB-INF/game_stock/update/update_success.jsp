@@ -12,10 +12,12 @@
 </head>
 <body>
 <jsp:include page="../../header/header.jsp" />
+<div class="main">
 	<h1>Update Success!</h1>
 	<form id="stockListForm" action="stockList" method="get">
 		<input type="button" class="btn" value="在庫一覧へ" onclick="audio('stockListForm')">
 	</form>
+	</div>
 	<audio id="btnClick_audio">
 		<source src="sounds/PC-Mouse05-1.mp3" type="audio/mp3">
 	</audio>
