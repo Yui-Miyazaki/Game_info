@@ -6,15 +6,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class HashDAO {
-public int registHash(String id,String pass,String salt,String hashPass) throws ClassNotFoundException, SQLException {
+public int registHash(String id,String salt,String hashPass) throws ClassNotFoundException, SQLException {
 	int registHashCount = 0;
-	String sql = "INSERT INTO m_login VALUES(?,?,?,?)";
+	String sql = "INSERT INTO m_login VALUES(?,?,?)";
 	try(Connection con = ConnectionManager.getConnection();
 			PreparedStatement pstmt = con.prepareStatement(sql)){
 		pstmt.setString(1, id);
-		pstmt.setString(2, pass);
-		pstmt.setString(3, salt);
-		pstmt.setString(4, hashPass);
+		pstmt.setString(2, salt);
+		pstmt.setString(3, hashPass);
 		registHashCount = pstmt.executeUpdate();
 		System.out.println(registHashCount);
 	}

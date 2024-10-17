@@ -56,7 +56,7 @@ public class HashServlet extends HttpServlet {
 		
 		HashDAO dao = new HashDAO();
 		try {
-			int registHashCount = dao.registHash(loginId, password, salt, hashPass);
+			int registHashCount = dao.registHash(loginId,salt, hashPass);
 			if(registHashCount > 0) {
 				System.out.println(registHashCount);
 				url = "WEB-INF/login_regist/loginRegist_succses.jsp";
