@@ -1,7 +1,10 @@
+<%@page import="model.entity.AuthorityBean"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%
 	String errorMessage = (String) request.getAttribute("errorMessage");
+	List<AuthorityBean> authorityList = (List)session.getAttribute("authorityList");
 	%>
 <!DOCTYPE html>
 <html>
@@ -22,7 +25,7 @@
 	<% }%>
 	</div>
 	<div class="main">
-	<form id="loginRegisterForm" action="hash" method="post">
+	<form id="loginRegisterForm" action="loginRegister" method="post">
 	    <div class="flexItem">
 		    <label for="title" class="item">LoginID</label> 
 		    <input type="text" class="textBox" name="id" id="title"><br>
@@ -30,6 +33,15 @@
 		<div class="flexItem">
 			<label for="password" class="item">Password</label> 
 			<input type="password" class="textBox" name="pass" id="password"><br>
+		</div>
+		<div class="flexItem">
+			<label for="authority" class="item">Authority</label> 
+			<select name="authority" class="selectBox">
+			<%for(AuthorityBean authority : authorityList){ %>
+			<option value=<%=authority.getAuthorityCode() %>><%=authority.getAuthorityName() %></option>
+			<%} %>
+			</select>
+			<br>
 		</div>
 		<input type="button" class="btn" value="新規登録" onclick="audio('loginRegisterForm')">
 	</form>

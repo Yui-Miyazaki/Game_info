@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<% String authorityCode = (String)session.getAttribute("authorityCode"); %>
 <!DOCTYPE html>
 <html>
 
@@ -28,6 +29,13 @@
 					<button class="btn" type="button" onclick="audio('employeeForm')">従業員一覧</button>
 				</div>
 			</form>
+			<%if((authorityCode != null) && "ADMIN".equals(authorityCode)){ %>
+		<form id="loginUser" action="loginUserList" method="get">
+			<div>
+				<button class="loginDeleteBtn"  type="button" onclick="audio('loginUser')">ユーザ一覧</button>
+			</div>
+		</form>
+		<%} %>
 		</div>
 		<form id="logoutForm" action="logout" method="get">
 			<div>

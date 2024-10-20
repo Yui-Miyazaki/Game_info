@@ -9,8 +9,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import model.dao.HashDAO;
 import model.dao.LoginDAO;
 import model.utirity.HashSolt;
 
@@ -49,24 +49,23 @@ public class LoginServlet extends HttpServlet {
 		String loginId = request.getParameter("loginId");
 		String password = request.getParameter("password");
 		
-		HashDAO dao = new HashDAO();
+		LoginDAO loginDao = new LoginDAO();
 		try {
-			String salt = dao.getSalt(loginId);
+			String salt = loginDao.getSalt(loginId);
 			if(salt != null) {
 				
 				HashSolt hashSalt = new HashSolt();
 				String hashPass = hashSalt.getHashPass(salt, password);
+				String authorityCode = loginDao.loginCheck(loginId, hashPass);
 				
-				LoginDAO loginDao = new LoginDAO();
-				int loginCheckCount = loginDao.loginCheck(loginId, hashPass);
-				System.out.println(loginCheckCount);
-				
-				if(loginCheckCount < 1) {
+				if(authorityCode != null) {
+					HttpSession session = request.getSession();
+					session.setAttribute("authorityCode", authorityCode);
+				}else {
 					url = "login.jsp";
 					String errorMessage = "ログイン認証に失敗しました。";
 					request.setAttribute("errorMessage", errorMessage);
 				}
-				
 			}else {
 				url ="login.jsp";
 				String errorMessage = "ユーザーが登録されていません。";

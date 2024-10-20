@@ -40,7 +40,7 @@ String errorMessage = (String) request.getAttribute("errorMessage");
 				</div>
 			</form>
 		</div>
-			<form  id="loginRegisterForm" action="hash" method="get">
+			<form  id="loginRegisterForm" action="loginRegister" method="get">
 			<input type="button" class="btn" value="新規登録" onclick="audio('loginRegisterForm')">
 			</form>
 	</main>
