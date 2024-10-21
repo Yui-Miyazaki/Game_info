@@ -1,5 +1,4 @@
 package servlet;
-
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -56,6 +55,7 @@ public class LoginDeleteServlet extends HttpServlet {
 		}
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
+	
 	}
 
 }
