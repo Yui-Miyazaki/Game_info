@@ -12,8 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.lang.StringEscapeUtils;
-
 import model.dao.LoginDAO;
 import model.entity.AuthorityBean;
 import model.utirity.HashSolt;
@@ -57,9 +55,9 @@ public class LoginRegisterServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String url = "WEB-INF/login_regist/login_register.jsp";
 		
-		String loginId = StringEscapeUtils.escapeHtml(request.getParameter("id"));
-		String password = StringEscapeUtils.escapeHtml(request.getParameter("pass"));
-		String authority = StringEscapeUtils.escapeHtml(request.getParameter("authority"));
+		String loginId = request.getParameter("id");
+		String password = request.getParameter("pass");
+		String authority = request.getParameter("authority");
 		
 		HashSolt hashSalt = new HashSolt();
 		String salt = hashSalt.getSalt(); 

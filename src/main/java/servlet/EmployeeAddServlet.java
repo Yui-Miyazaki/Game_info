@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.commons.text.StringEscapeUtils;
 
 import model.dao.EmployeeDAO;
 import model.entity.PostBean;
@@ -61,10 +61,10 @@ public class EmployeeAddServlet extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         String url = "WEB-INF/employee/add/employeeAdd_failure.jsp";
-        String name = StringEscapeUtils.escapeHtml(request.getParameter("name"));
+        String name = StringEscapeUtils.escapeHtml4(request.getParameter("name"));
         String strAge = request.getParameter("age");
         String postCode = request.getParameter("postCode");
-        System.out.println(name + strAge + postCode);
+        System.out.println(name);
         EmployeeDAO dao = new EmployeeDAO();
 
         int age = Integer.parseInt(strAge);

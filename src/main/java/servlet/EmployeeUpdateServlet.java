@@ -12,8 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.lang.StringEscapeUtils;
-
 import model.dao.EmployeeDAO;
 import model.entity.EmployeeBean;
 import model.entity.PostBean;
@@ -68,7 +66,8 @@ public class EmployeeUpdateServlet extends HttpServlet {
 		String url = "WEB-INF/employee/update/employeeUpdate_failure.jsp";
 		HttpSession session = request.getSession();
 		int employeeId = (int) session.getAttribute("employeeId");
-		String name = StringEscapeUtils.escapeHtml(request.getParameter("name"));
+		String name = request.getParameter("name");
+		System.out.println(name);
 		String strAge = request.getParameter("age");
 		String postCode = request.getParameter("postCode");
 		EmployeeDAO dao = new EmployeeDAO();
