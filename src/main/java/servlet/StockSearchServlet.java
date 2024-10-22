@@ -35,7 +35,7 @@ public class StockSearchServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String url = "WEB-INF/game_stock/search/searchResult.jsp";
+		String url = "WEB-INF/game_stock/search/search_result.jsp";
 		String gameName = request.getParameter("gameName");
 		String maker = request.getParameter("maker");
 		String strStock = request.getParameter("stock");

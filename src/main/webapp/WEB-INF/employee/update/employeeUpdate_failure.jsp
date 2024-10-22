@@ -14,6 +14,7 @@ int employeeId = (int) session.getAttribute("employeeId");
 <title>更新失敗画面</title>
 </head>
 <body>
+<jsp:include page="../../header/header.jsp" />
 	<div class="main">
 		<h1 class="errorMessage">Update Error!</h1>
 		<form id="employeeUpdateForm" action="employeeUpdate" method="get">

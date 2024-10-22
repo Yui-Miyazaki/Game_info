@@ -49,6 +49,15 @@
 	font-weight: 900;
 	border: 6px outset dodgerblue;
 }
+.loginDeleteBtn {
+	width: 130px;
+	height: 40px;
+	border-radius: 10px;
+	background-color: orange;
+	border: 6px outset darkorange;
+	color: black;
+	font-weight: 900;
+}
 
 .btn:hover,
 .update_btn:hover {
@@ -62,6 +71,10 @@
 }
 
 .deleteBtn:hover {
+	background-color: orangered;
+	color: white;
+}
+.loginDeleteBtn:hover{
 	background-color: orangered;
 	color: white;
 }

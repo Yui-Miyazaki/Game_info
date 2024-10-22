@@ -11,6 +11,7 @@
 <title>登録失敗画面</title>
 </head>
 <body>
+<jsp:include page="../../header/header.jsp" />
 <div class="main">
 <h1 class="errorMessage">Add Error!</h1>
 <form id="employeeAddForm" action="employeeAdd" method="get">

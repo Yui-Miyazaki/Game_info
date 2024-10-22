@@ -11,6 +11,7 @@
 <title>更新成功画面</title>
 </head>
 <body>
+<jsp:include page="../../header/header.jsp" />
 <div class="main">
 	<h1>Update Success！</h1>
 	<form id="employeeListForm" action="employeeList" method="get">

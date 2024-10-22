@@ -48,7 +48,7 @@ public class EmployeeDeleteServlet extends HttpServlet {
 			session.setAttribute("employeeId", employeeId);
 		} catch (ClassNotFoundException | SQLException e) {
 		}
-		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/employee/delete/employee-delete.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/employee/delete/employee_delete.jsp");
 		rd.forward(request, response);
 
 	}

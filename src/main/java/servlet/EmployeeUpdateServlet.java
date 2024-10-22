@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.text.StringEscapeUtils;
+
 import model.dao.EmployeeDAO;
 import model.entity.EmployeeBean;
 import model.entity.PostBean;
@@ -63,19 +65,30 @@ public class EmployeeUpdateServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String url = "WEB-INF/employee/update/employeeUpdate_failure.jsp";
+		String url = "WEB-INF/employee/update/employee_update.jsp";
 		HttpSession session = request.getSession();
 		int employeeId = (int) session.getAttribute("employeeId");
-		String name = request.getParameter("name");
+		String name = StringEscapeUtils.escapeHtml4(request.getParameter("name"));
 		String strAge = request.getParameter("age");
 		String postCode = request.getParameter("postCode");
+		String errorMessage = null;
 		EmployeeDAO dao = new EmployeeDAO();
 		try {
 			int age = Integer.parseInt(strAge);
+			if (name.isEmpty()) {
+				errorMessage = "文字を入力してください。";
+			} else if (name.length() > 32) {
+				errorMessage = "1文字以上32文字以内で入力してください。";
+			//正常処理
+			}else {
 			int updateCount = dao.employeeUpdate(name, age, postCode, employeeId);
 			if (updateCount > 0) {
 				url = "WEB-INF/employee/update/employeeUpdate_success.jsp";
+			}else {
+				url = "WEB-INF/employee/update/employeeUpdate_failure.jsp";
 			}
+			}
+			request.setAttribute("errorMessage", errorMessage);
 		} catch (ClassNotFoundException | SQLException | NumberFormatException e) {
 			e.printStackTrace();
 		}

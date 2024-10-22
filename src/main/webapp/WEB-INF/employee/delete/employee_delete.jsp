@@ -16,6 +16,7 @@ EmployeeBean employee = (EmployeeBean) session.getAttribute("employee");
 <title>削除確認画面</title>
 </head>
 <body>
+<jsp:include page="../../header/header.jsp" />
 	<h1>以下の従業員情報を削除します。</h1>
 	<table border="1" class="list">
 		<tr>
