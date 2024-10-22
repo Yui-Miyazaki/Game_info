@@ -1,0 +1,29 @@
+@charset "UTF-8";
+html,body{
+	text-align: center;
+	background-color:black;
+	color: limegreen;
+	font-family: Arial;
+	overflow: hidden;
+}
+.textBox{
+	height: 25px;
+	background-color: #000;
+	color: limegreen;
+	border:2px double limegreen;
+}
+.selectBox{
+	width: auto;
+	height: 30px;
+	color: limegreen;
+	background-color: #000;
+	border:  2px solid limegreen;
+	
+}
+.successMessage{
+	font-weight: lighter;
+}
+.errorMessage{
+	color: red;
+	font-weight: lighter;
+}

@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+
+
+.list {
+	max-height: 450px;
+	display: inline-block;
+	margin: 0 auto;
+	margin-bottom: 20px;
+	border: 10px double limegreen;
+	border-color: limegreen;
+	overflow-y: scroll;
+	scrollbar-color: grey black;
+	
+
+}
+
+
+.column_name {
+	background-color: limegreen;
+	color: black;
+	padding: 0 20px;
+	position: sticky;
+	top: 0px;
+}
+
+.logout_btn {
+	margin: top 30px;
+}
