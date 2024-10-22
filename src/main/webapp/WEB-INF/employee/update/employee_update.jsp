@@ -6,6 +6,7 @@
 <%
 List<PostBean> postList = (List) session.getAttribute("postList");
 EmployeeBean employee = (EmployeeBean) session.getAttribute("employee");
+String errorMessage = (String)request.getAttribute("errorMessage");
 %>
 <!DOCTYPE html>
 <html>
@@ -37,6 +38,9 @@ EmployeeBean employee = (EmployeeBean) session.getAttribute("employee");
 		<div class="main">
 		<h2>更新情報入力</h2>
 			<form id="employeeUpdateForm" action="employeeUpdate" method="post">
+			<%if(errorMessage != null){ %>
+			<span><%=errorMessage %></span>
+			<%} %>
 				<div class="flexItem">
 					<span class="item">氏名</span> 
 					<input type="text" class="textBox" name="name"><br>

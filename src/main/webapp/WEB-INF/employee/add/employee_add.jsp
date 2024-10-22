@@ -4,6 +4,7 @@
 	pageEncoding="UTF-8"%>
 <%
 List<PostBean> postList = (List) session.getAttribute("postList");
+String errorMessage = (String)request.getAttribute("errorMessage");
 %>
 <!DOCTYPE html>
 <html>
@@ -21,6 +22,9 @@ List<PostBean> postList = (List) session.getAttribute("postList");
 	<div class="main">
 	<h2>登録情報入力</h2>
 	<form id="employeeAddForm" action="employeeAdd" method="post">
+		<%if(errorMessage != null){ %>
+			<span><%=errorMessage %></span>
+		<%} %>
 		<div class="flexItem">
 			<span class="item">氏名</span> <input type="text" class="textBox" name="name"><br>
 		</div>
