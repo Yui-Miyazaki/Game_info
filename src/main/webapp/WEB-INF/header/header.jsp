@@ -9,7 +9,9 @@
 <link rel="stylesheet" href="CSS/common/header.css">
 </head>
 <header class="header">
-	<img class="headerIcon" src="img/header_bento.png">
+	<div class="header__imageBox">
+		<img class="header__headerIcon" src="img/header_bento.png">
+	</div>
 	<div id="customAlert" class="modal">
 		<div class="modal-content">
 			<form id="menuForm" action="menu" method="get">
@@ -20,7 +22,7 @@
 				<input type="button" class="resetBtn" id="logoutBtn" value="ログアウト"
 					onclick="audio('logoutForm')">
 			</form>
-			<button id="closeModal" class="btn">閉じる</button>
+			<button id="closeModal" class="closeBtn">×</button>
 		</div>
 	</div>
 </header>

@@ -15,6 +15,7 @@ String itemCode = (String) session.getAttribute("itemCode");
 <title>更新エラー画面</title>
 </head>
 <body>
+<jsp:include page="../../header/header.jsp" />
 	<div class="main">
 		<h1 class="errorMessage">Update Error!</h1>
 		<form id="stockUpdateForm" action="stockUpdate" method="get">
