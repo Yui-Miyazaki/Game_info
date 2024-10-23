@@ -21,7 +21,6 @@
 	<jsp:include page="../../header/header.jsp" />
 	<h1>在庫管理一覧</h1>
 	<div class="searchForm">
-	<form id="searchForm" method="get">
 	<h2>search</h2>
 	<span>商品名</span>
 	<input type="text" class="textBox" name="gameName" id="gameName"  placeholder="ゲーム名を入力してください。">
@@ -33,11 +32,15 @@
 			<option><%=i %></option>
 		<%} %>
 	</select>
-	<input type="button" class="btn" id="search" value="検索🔍" onclick="audio('searchForm')">
-	</form>
+	<input type="button" class="searchBtn" id="search" name="searchBtn" value="検索🔍" onclick="audio('searchForm')">
+	<input type="button" class="searchBtn" id="allBtn" name="allGetBtn" value="全件表示" onclick="audio('searchForm')">
+	
 	</div>
 	<div>
-	<table border="1" class="list">
+	<form id="stockAddForm" action="stockAdd" method="get">
+		<input type="button" class="regist_btn" value="新規登録" onclick="audio('stockAddForm')">
+	</form>
+	<table border="1" class="list" id="searchResult">
 		<tr>
 			<th class="column_name">ゲームID</th>
 			<th class="column_name">ゲーム名</th>
@@ -47,52 +50,9 @@
 			<th class="column_name">販売価格</th>
 			<th class="column_name">人気</th>
 			<th class="column_name">商品コード</th>
-			<th colspan="2" class="column_name">
-	<div class="colum_name">
-	<form id="stockAddForm" action="stockAdd" method="get">
-		<input type="button" class="regist_btn" value="新規登録" onclick="audio('stockAddForm')">
-	</form>
-	</div>
-			</th>
-			
+			<th class="column_name">選択</th>
 		</tr>
-		<%
-		for (GameBean game : stockList) {
-		%>
-		<tr>
-			<td><%=game.getGameId()%></td>
-			<td><%=game.getGameName()%></td>
-			<td><%=game.getMaker()%></td>
-			<td><%=game.getReleseDate()%></td>
-			<td><%=game.getStock()%></td>
-			<td><%=game.getPrice()%></td>
-			<td><%=game.getRanking()%></td>
-			<td><%=game.getItemCode()%></td>
-			<td>
-				<form id="stockUpdateForm_<%=game.getGameId() %>" action="stockUpdate" method="get">
-					<input type="button" class="update_btn" value="更新" onclick="audio('stockUpdateForm_<%=game.getGameId() %>')">
-					<input type="hidden" name="gameName" value=<%=game.getGameName()%>>
-					<input type="hidden" name="itemCode"  value=<%=game.getItemCode()%>>
-				</form>
-			</td>
-			<td>
-				<form id="stockDeleteForm <%=game.getGameId() %>" action="stockDelete" method="get">
-					<input type="button" class="deleteBtn" value="削除" onclick="audio('stockDeleteForm <%=game.getGameId() %>')">
-					<input type="hidden" name="gameName" value=<%=game.getGameName()%>>
-					<input type="hidden" name="itemCode"  value=<%=game.getItemCode()%>>
-				</form>
-			</td>
-		</tr>
-		<%
-		}
-		%>
-	</table>
-	<table>
-	<tr>
-	<td id="gameName">
 	
-	</td>
-	</tr>
 	</table>
 	</div>
 	<div class="btn_box">
@@ -109,20 +69,48 @@
 		<source src="sounds/PC-Mouse05-1.mp3" type="audio/mp3">
 	</audio>
 <script>	
-$("#search").on('click', function() {
-	alert("a");
+$(".searchBtn").on('click', function() {
 	$.ajax({
 		type: "get",
 		url: "ajax",
 		data: {
 			gameName: $("#gameName").val(),
 			maker: $("#maker").val(),
-			stock: $("#stock").val()
+			stock: $("#stock").val(),
+			searchBtn : $(this).val(),
 		},
 		dataType: "json"
 	}).done(function(result) {
-		alert("ajax");
-		alert(result.gameName);
+		$("#searchResult").empty();
+        $("#searchResult").append(
+        		"<tr>" +
+    			"<th class=\"column_name\">ゲームID</th>" +
+    			"<th class=\"column_name\">ゲーム名</th>" +
+    			"<th class=\"column_name\">メーカー</th>" +
+    			"<th class=\"column_name\">発売日</th>" +
+    			"<th class=\"column_name\">在庫数</th>" +
+    			"<th class=\"column_name\">価格</th>" +
+    			"<th class=\"column_name\">人気</th>" +
+    			"<th class=\"column_name\">商品コード</th>" +
+    			"<th class=\"column_name\">選択</th>" +
+    			"</tr>"
+                );
+		$.each(result, function(index, result) {
+           $("#searchResult").append(
+                   "<tr>"+
+                    "<td>" + result.gameId + "</td>" + 
+                    "<td>" + result.gameName + "</td>" +
+                    "<td>" + result.maker + "</td>" +
+                    "<td>" + result.releseDate + "</td>" +
+                    "<td>" + result.stock + "</td>" +
+                    "<td>" + result.price + "</td>" +
+                    "<td>" + result.ranking + "</td>" +
+                    "<td>" + result.itemCode + "</td>" +
+                    "<td>" + "<input type=\"checkbox\" name=\"check\" value=result.itemCode>" + "</td>" + 
+                    "</tr>" 
+                   ); 
+       
+        });
 	}).fail(function() {
 
 		alert("読み込み失敗");

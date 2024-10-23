@@ -1,21 +1,19 @@
-
+	
 $("#search").on('click', function() {
 	alert("a");
 	$.ajax({
 		type: "get",
 		url: "ajax",
 		data: {
-			gameName: ("gameName"),
-			maker: ("maker"),
-			stock: ("stock")
+			gameName: $("#gameName").val(),
+			maker: $("#maker").val(),
+			stock: $("#stock").val(),
+			btn : $("#search").val()
 		},
 		dataType: "json"
 	}).done(function(result) {
-		let game = result[0];
-		
-		alert(game.gameId);
 		alert("ajax");
-		$("#gameName").html(result)
+		alert(result.gameName);
 	}).fail(function() {
 
 		alert("読み込み失敗");
