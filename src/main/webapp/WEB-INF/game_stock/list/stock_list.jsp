@@ -9,6 +9,7 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="javaScript/Ajax.js"></script>
+<script src="javaScript/checkBox.js"></script>
 <meta charset="UTF-8">
 <script src="javaScript/common.js"></script>
 <link rel="stylesheet" href="CSS/common/common.css">
@@ -51,8 +52,15 @@
 			<th class="column_name">人気</th>
 			<th class="column_name">商品コード</th>
 			<th class="column_name">選択</th>
-		</tr>
 	
+
+		</tr>
+				<tr>
+<td><input type="checkbox" name="check" class="check" value="チェック１">チェック1</td>
+<td><input type="checkbox" name="check" class="check" value="チェック１">チェック1</td>
+<td><input type="checkbox" name="check" class="check" value="チェック１">チェック1</td>
+	</tr>
+
 	</table>
 	</div>
 	<div class="btn_box">
@@ -68,7 +76,7 @@
 	<audio id="btnClick_audio">
 		<source src="sounds/PC-Mouse05-1.mp3" type="audio/mp3">
 	</audio>
-<script>	
+<script defer>	
 $(".searchBtn").on('click', function() {
 	$.ajax({
 		type: "get",
@@ -106,11 +114,12 @@ $(".searchBtn").on('click', function() {
                     "<td>" + result.price + "</td>" +
                     "<td>" + result.ranking + "</td>" +
                     "<td>" + result.itemCode + "</td>" +
-                    "<td>" + "<input type=\"checkbox\" name=\"check\" value=result.itemCode>" + "</td>" + 
-                    "</tr>" 
+                    "<td>" + "<input type=\"checkbox\" name=\"check\" class=\"check\"></td>" +
+                    "</tr>"
                    ); 
        
         });
+        
 	}).fail(function() {
 
 		alert("読み込み失敗");
