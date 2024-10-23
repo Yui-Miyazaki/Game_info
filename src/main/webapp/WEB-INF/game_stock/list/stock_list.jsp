@@ -6,6 +6,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="javaScript/Ajax.js"></script>
 <meta charset="UTF-8">
 <script src="javaScript/common.js"></script>
 <link rel="stylesheet" href="CSS/common/common.css">
@@ -18,19 +21,19 @@
 	<jsp:include page="../../header/header.jsp" />
 	<h1>在庫管理一覧</h1>
 	<div class="searchForm">
-	<form id="searchForm" action="stockSearch" method="post">
+	<form id="searchForm" method="get">
 	<h2>search</h2>
 	<span>商品名</span>
-	<input type="text" class="textBox" name="gameName" placeholder="ゲーム名を入力してください。">
+	<input type="text" class="textBox" name="gameName" id="gameName"  placeholder="ゲーム名を入力してください。">
 	<span>メーカー</span>
-	<input type="text" class="textBox" name="maker" placeholder="メーカー名を入力してください。">
+	<input type="text" class="textBox" name="maker" id="maker" placeholder="メーカー名を入力してください。">
 	<span>在庫数</span>
-	<select  name="stock"class="selectBox">
+	<select  name="stock"class="selectBox" id="stock">
 		<%for(int i = 1;i <= 10;i++) {%>
 			<option><%=i %></option>
 		<%} %>
 	</select>
-	<input type="button" class="btn" value="検索🔍" onclick="audio('searchForm')">
+	<input type="button" class="btn" id="search" value="検索🔍" onclick="audio('searchForm')">
 	</form>
 	</div>
 	<div>
@@ -84,6 +87,13 @@
 		}
 		%>
 	</table>
+	<table>
+	<tr>
+	<td id="gameName">
+	
+	</td>
+	</tr>
+	</table>
 	</div>
 	<div class="btn_box">
 	</div>
@@ -98,5 +108,27 @@
 	<audio id="btnClick_audio">
 		<source src="sounds/PC-Mouse05-1.mp3" type="audio/mp3">
 	</audio>
+<script>	
+$("#search").on('click', function() {
+	alert("a");
+	$.ajax({
+		type: "get",
+		url: "ajax",
+		data: {
+			gameName: $("#gameName").val(),
+			maker: $("#maker").val(),
+			stock: $("#stock").val()
+		},
+		dataType: "json"
+	}).done(function(result) {
+		alert("ajax");
+		alert(result.gameName);
+	}).fail(function() {
+
+		alert("読み込み失敗");
+
+	});
+});
+</script>
 </body>
 </html>
