@@ -52,18 +52,18 @@
 			<th class="column_name">人気</th>
 			<th class="column_name">商品コード</th>
 			<th class="column_name">選択</th>
-	
-
 		</tr>
-				<tr>
-<td><input type="checkbox" name="check" class="check" value="チェック１">チェック1</td>
-<td><input type="checkbox" name="check" class="check" value="チェック１">チェック1</td>
-<td><input type="checkbox" name="check" class="check" value="チェック１">チェック1</td>
-	</tr>
-
 	</table>
 	</div>
 	<div class="btn_box">
+	<form action="stock_update" method="get">
+	<input type="button" class="btn" value="更新">
+	<input type="hidden" name="itemCode" value="itemCode">
+	</form>
+	<form action="stock_delete" method="get">
+	<input type="button" class="btn" value="削除">
+	<input type="hidden" name="itemCode" value="itemCode">
+	</form>
 	</div>
 	<form id="menuForm" action="menu" method="get">
 	<input type="button" class="btn" value="メニュー画面へ" onclick="audio('menuForm')">
@@ -114,7 +114,7 @@ $(".searchBtn").on('click', function() {
                     "<td>" + result.price + "</td>" +
                     "<td>" + result.ranking + "</td>" +
                     "<td>" + result.itemCode + "</td>" +
-                    "<td>" + "<input type=\"checkbox\" name=\"check\" class=\"check\"></td>" +
+                    "<td>" + "<input type=\"checkbox\" name=\"check\" class=\"check\" value=\"result.itemCode\"></td>" +
                     "</tr>"
                    ); 
        
