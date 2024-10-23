@@ -97,7 +97,7 @@ public class StockDAO {
 
 				stockPstmt.setString(1, itemCode);
 				deleteCount = stockPstmt.executeUpdate();
-				System.out.println(deleteCount);
+			
 				con.commit();
 			} catch (SQLException e) {
 				con.rollback();
