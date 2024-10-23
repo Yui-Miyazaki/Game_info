@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -39,23 +40,32 @@ public class EmployeeUpdateServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-
-		String strEmployeeId = request.getParameter("employeeId");//更新時キャスト必要
+		String url = "WEB-INF/employee/update/employee_update.jsp";
+		//チェックボックスから配列で取得
+		String[] strEmployeeIds = request.getParameterValues("employeeId");//更新時キャスト必要
+		HttpSession session = request.getSession();
+		List<EmployeeBean> updateEmployeeList = new ArrayList<EmployeeBean>();
 		EmployeeDAO dao = new EmployeeDAO();
 		try {
-			int employeeId = Integer.parseInt(strEmployeeId);
-			EmployeeBean employee = dao.getEmployeeInfo(employeeId);
-			List<PostBean> postList = dao.getPostList();
-			HttpSession session = request.getSession();
-			if (employee != null) {
-				session.setAttribute("employee", employee);
+			if (strEmployeeIds != null && strEmployeeIds.length > 0) {
+				//更新する従業員情報をループで取得
+				for (String strEmployeeId : strEmployeeIds) {
+					int employeeId = Integer.parseInt(strEmployeeId);
+					EmployeeBean employee = dao.getEmployeeInfo(employeeId);
+					updateEmployeeList.add(employee);
+				}
+				session.setAttribute("updateEmployeeList", updateEmployeeList);
+				List<PostBean> postList = dao.getPostList();
+				session.setAttribute("postList", postList);
+			} else {
+				String errorMessage = "チェックを入れてください。";
+				request.setAttribute("errorMessage", errorMessage);
+				url = "WEB-INF/employee/list/employee_list.jsp";
 			}
-			session.setAttribute("employeeId", employeeId);
-			session.setAttribute("postList", postList);
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
-		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/employee/update/employee_update.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
 	}
 
@@ -67,6 +77,7 @@ public class EmployeeUpdateServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String url = "WEB-INF/employee/update/employee_update.jsp";
 		HttpSession session = request.getSession();
+		String[] nameList = request.getParameterValues("name");
 		int employeeId = (int) session.getAttribute("employeeId");
 		String name = StringEscapeUtils.escapeHtml4(request.getParameter("name"));
 		String strAge = request.getParameter("age");
@@ -79,14 +90,14 @@ public class EmployeeUpdateServlet extends HttpServlet {
 				errorMessage = "文字を入力してください。";
 			} else if (name.length() > 32) {
 				errorMessage = "1文字以上32文字以内で入力してください。";
-			//正常処理
-			}else {
-			int updateCount = dao.employeeUpdate(name, age, postCode, employeeId);
-			if (updateCount > 0) {
-				url = "WEB-INF/employee/update/employeeUpdate_success.jsp";
-			}else {
-				url = "WEB-INF/employee/update/employeeUpdate_failure.jsp";
-			}
+				//正常処理
+			} else {
+				int updateCount = dao.employeeUpdate(name, age, postCode, employeeId);
+				if (updateCount > 0) {
+					url = "WEB-INF/employee/update/employeeUpdate_success.jsp";
+				} else {
+					url = "WEB-INF/employee/update/employeeUpdate_failure.jsp";
+				}
 			}
 			request.setAttribute("errorMessage", errorMessage);
 		} catch (ClassNotFoundException | SQLException | NumberFormatException e) {
