@@ -9,8 +9,8 @@ $(function(){
 });
 $(function(){
 	$('#updateBtn').on('click',function(){
-		alert("a");
-let element = document.getElementById('check');
+		
+let element = document.getElementById('check').value;
 console.log(element);
 	});
 });

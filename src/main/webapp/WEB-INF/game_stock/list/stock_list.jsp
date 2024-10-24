@@ -115,7 +115,7 @@ $(".searchBtn").on('click', function() {
                     "<td>" + result.price + "</td>" +
                     "<td>" + result.ranking + "</td>" +
                     "<td>" + result.itemCode + "</td>" +
-                    "<td>" + "<input type=\"checkbox\" name=\"check\" class=\"check\" value=\"result.itemCode\"></td>" +
+                    "<td>" + "<input type=\"checkbox\" id=\"check\" name=\"check\" class=\"check\" value="">" + "</td>" +
                     "</tr>" 
                    ); 
         });
