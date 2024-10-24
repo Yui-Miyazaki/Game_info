@@ -35,7 +35,8 @@ public class StockUpdateServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String gameName = request.getParameter("gameName");
 		String itemCode = request.getParameter("itemCode");
-		
+		String check = request.getParameter("check");
+		System.out.println(check);
 		HttpSession session = request.getSession();
 		session.setAttribute("gameName", gameName);
 		session.setAttribute("itemCode", itemCode);

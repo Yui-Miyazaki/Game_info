@@ -42,7 +42,7 @@
 	<form id="stockAddForm" action="stockAdd" method="get">
 		<input type="button" class="regist_btn" value="新規登録" onclick="audio('stockAddForm')">
 	</form>
-	<form action="?" method="get">
+	<form action="" method="get">
 	<table border="1" class="list" id="searchResult">
 		<tr>
 			<th class="column_name">ゲームID</th>
@@ -56,13 +56,13 @@
 			<th class="column_name">選択</th>
 		</tr>
 	</table>
+	<input type="hidden" name="gameName" value="gameName">
 	<button type="button" class="btn" id="updateBtn" onclick="multipleaction('stockUpdate')" >更新</button>
-	<input type="hidden" name="gameName" value="result.gameName">
-	<input type="hidden" name="itemCode" value="result.itemCode">
+	<input type="hidden" name="itemCode">
 	
 	<button type="button" class="btn" 	 onclick="multipleaction('stockDelete')">削除</button>
-	<input type="hidden" name="gameName" value="result.gameName">
-	<input type="hidden" name="itemCode" value="result.itemCode">
+	<input type="hidden" name="gameName">
+	<input type="hidden" name="itemCode">
 	</form>
 	</div>
 
@@ -115,7 +115,9 @@ $(".searchBtn").on('click', function() {
                     "<td>" + result.price + "</td>" +
                     "<td>" + result.ranking + "</td>" +
                     "<td>" + result.itemCode + "</td>" +
-                    "<td>" + "<input type=\"checkbox\" id=\"check\" name=\"check\" class=\"check\" value="">" + "</td>" +
+                    "<td>" + "<input type=\"checkbox\" id=\"check\" name=\"check\" class=\"check\" value=" + result.itemCode + ">" + "</td>" +
+                    "<td>" + "<input type=\"hidden\" name=\"gameName\" value=\"A\">" + "</td>" +
+                    
                     "</tr>" 
                    ); 
         });
