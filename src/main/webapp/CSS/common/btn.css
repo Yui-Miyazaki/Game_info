@@ -39,7 +39,15 @@
 	font-weight: 900;
 	border: 6px outset darkgreen;
 }
-
+.searchBtn {
+	width: 130px;
+	height: 40px;
+	border-radius: 10px;
+	background-color: limegreen;
+	color: #000;
+	font-weight: 900;
+	border: 6px outset darkgreen;
+	}
 .regist_btn {
 	width: 130px;
 	height: 40px;

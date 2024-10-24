@@ -39,10 +39,10 @@ public class StockSearchServlet extends HttpServlet {
 		String gameName = request.getParameter("gameName");
 		String maker = request.getParameter("maker");
 		String strStock = request.getParameter("stock");
-		System.out.println(strStock);
+		
 		int stock = Integer.parseInt(strStock);
-		System.out.println(gameName);
-		System.out.println(maker);
+		
+		
 		StockDAO dao = new StockDAO();
 		try {
 			List<GameBean> searchResultList = dao.getGameSearch(gameName, maker, stock);
