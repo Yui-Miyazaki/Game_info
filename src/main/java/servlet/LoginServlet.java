@@ -60,6 +60,7 @@ public class LoginServlet extends HttpServlet {
 				
 				if(authorityCode != null) {
 					HttpSession session = request.getSession();
+					session.setAttribute("loginId",loginId);
 					session.setAttribute("authorityCode", authorityCode);
 				}else {
 					url = "login.jsp";
