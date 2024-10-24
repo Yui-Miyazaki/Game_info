@@ -37,10 +37,11 @@
 	<input type="button" class="searchBtn" id="allBtn" name="allGetBtn" value="全件表示" onclick="audio('searchForm')">
 	
 	</div>
-	<div>
+	<div class="btnform">
 	<form id="stockAddForm" action="stockAdd" method="get">
 		<input type="button" class="regist_btn" value="新規登録" onclick="audio('stockAddForm')">
 	</form>
+	<form action="?" method="get">
 	<table border="1" class="list" id="searchResult">
 		<tr>
 			<th class="column_name">ゲームID</th>
@@ -54,17 +55,16 @@
 			<th class="column_name">選択</th>
 		</tr>
 	</table>
-	</div>
-	<div class="btn_box">
-	<form action="stock_update" method="get">
-	<input type="button" class="btn" value="更新">
-	<input type="hidden" name="itemCode" value="itemCode">
-	</form>
-	<form action="stock_delete" method="get">
-	<input type="button" class="btn" value="削除">
-	<input type="hidden" name="itemCode" value="itemCode">
+	<button type="submit" class="btn"  onclick="audio('btnform')" formaction="stockUpdate">更新</button>
+	<input type="hidden" name="gameName" value="result.gameName">
+	<input type="hidden" name="itemCode" value="result.itemCode">
+	
+	<button type="submit" class="btn" 	 onclick="audio('btnform')" formaction="stockDelete">削除</button>
+	<input type="hidden" name="gameName" value="result.gameName">
+	<input type="hidden" name="itemCode" value="result.itemCode">
 	</form>
 	</div>
+
 	<form id="menuForm" action="menu" method="get">
 	<input type="button" class="btn" value="メニュー画面へ" onclick="audio('menuForm')">
 	</form><br>
@@ -114,8 +114,14 @@ $(".searchBtn").on('click', function() {
                     "<td>" + result.price + "</td>" +
                     "<td>" + result.ranking + "</td>" +
                     "<td>" + result.itemCode + "</td>" +
-                    "<td>" + "<input type=\"checkbox\" name=\"check\" class=\"check\" value=\"result.itemCode\"></td>" +
-                    "</tr>"
+                    "<td>" + "<input type=\"checkbox\" name=\"check\" class=\"check\"></td>" +
+                    "</tr>" +
+                    "<input type=\"button\" class=\"btn\" value=\"更新\">" +
+               	    "<input type=\"hidden\" name=\"gameName\" value=\"result.gameName\">" +
+               	    "<input type=\"hidden\" name=\"itemCode\" value=\"result.itemCode\">" +
+                    "<input type=\"button\" class=\"btn\" value=\"削除\">" +
+               	    "<input type=\"hidden\" name=\"gameName\" value=\"result.gameName\">" +
+               	    "<input type=\"hidden\" name=\"itemCode\" value=\"result.itemCode\">" 
                    ); 
        
         });
