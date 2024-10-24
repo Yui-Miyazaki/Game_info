@@ -2,7 +2,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%List<GameBean> stockList = (List<GameBean>)session.getAttribute("stockList"); %>
+<%List<GameBean> searchResultList = (List<GameBean>)session.getAttribute("searchResultList"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +10,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="javaScript/Ajax.js"></script>
 <script src="javaScript/checkBox.js"></script>
+<script src="javaScript/multipleAction.js"></script>
 <meta charset="UTF-8">
 <script src="javaScript/common.js"></script>
 <link rel="stylesheet" href="CSS/common/common.css">
@@ -55,11 +56,11 @@
 			<th class="column_name">選択</th>
 		</tr>
 	</table>
-	<button type="submit" class="btn"  onclick="audio('btnform')" formaction="stockUpdate">更新</button>
+	<button type="button" class="btn" id="updateBtn" onclick="multipleaction('stockUpdate')" >更新</button>
 	<input type="hidden" name="gameName" value="result.gameName">
 	<input type="hidden" name="itemCode" value="result.itemCode">
 	
-	<button type="submit" class="btn" 	 onclick="audio('btnform')" formaction="stockDelete">削除</button>
+	<button type="button" class="btn" 	 onclick="multipleaction('stockDelete')">削除</button>
 	<input type="hidden" name="gameName" value="result.gameName">
 	<input type="hidden" name="itemCode" value="result.itemCode">
 	</form>
@@ -114,22 +115,13 @@ $(".searchBtn").on('click', function() {
                     "<td>" + result.price + "</td>" +
                     "<td>" + result.ranking + "</td>" +
                     "<td>" + result.itemCode + "</td>" +
-                    "<td>" + "<input type=\"checkbox\" name=\"check\" class=\"check\"></td>" +
-                    "</tr>" +
-                    "<input type=\"button\" class=\"btn\" value=\"更新\">" +
-               	    "<input type=\"hidden\" name=\"gameName\" value=\"result.gameName\">" +
-               	    "<input type=\"hidden\" name=\"itemCode\" value=\"result.itemCode\">" +
-                    "<input type=\"button\" class=\"btn\" value=\"削除\">" +
-               	    "<input type=\"hidden\" name=\"gameName\" value=\"result.gameName\">" +
-               	    "<input type=\"hidden\" name=\"itemCode\" value=\"result.itemCode\">" 
+                    "<td>" + "<input type=\"checkbox\" name=\"check\" class=\"check\" value=\"result.itemCode\"></td>" +
+                    "</tr>" 
                    ); 
-       
         });
         
 	}).fail(function() {
-
 		alert("読み込み失敗");
-
 	});
 });
 </script>

@@ -7,14 +7,10 @@ $(function(){
     }
   });
 });
-
-function chebg(chkID){//タグの背景色変更
-    Myid=document.getElementById(chkID);
-    if(Myid.checked == true){
-        Myid.parentNode.style.backgroundColor = '#CC28A8';
-        Myid.parentNode.style.color = '#FFFFFF';
-    }else{
-        Myid.parentNode.style.backgroundColor = '#FFFFFF';//背景色
-        Myid.parentNode.style.color = '#333333';//文字色
-    }
-}
+$(function(){
+	$('#updateBtn').on('click',function(){
+		alert("a");
+let element = document.getElementById('check');
+console.log(element);
+	});
+});

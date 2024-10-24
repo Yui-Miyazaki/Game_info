@@ -33,7 +33,6 @@ public class HashSolt {
         
  
 
-        System.out.println("Salted Hashed Password: " + hashPass);
     } catch (NoSuchAlgorithmException e) {
         e.printStackTrace();
     }
