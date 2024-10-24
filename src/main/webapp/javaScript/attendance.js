@@ -4,14 +4,13 @@ $(".attedanceBtn").on('click', function() {
 		url: "attendance",
 		data: {
 			attedanceBtn : $(this).val(),
-		}
+			employeeId : $('#employeeId').val()
+ 		}
 //		dataType: "json"
 	}).done(function() {
-		alert("a");
 		$("#attendanceResult").empty();
         $("#attendanceResult").append(
         		"<tr>" +
-    			"<th class=\"column_name\">日付</th>" +
     			"<th class=\"column_name\">出勤</th>" +
     			"<th class=\"column_name\">休憩開始</th>" +
     			"<th class=\"column_name\">休憩終了</th>" +

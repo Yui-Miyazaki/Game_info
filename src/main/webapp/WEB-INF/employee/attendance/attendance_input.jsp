@@ -1,5 +1,9 @@
+<%@page import="model.entity.LoginUserBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% 
+	LoginUserBean loginUser = (LoginUserBean)session.getAttribute("loginUser"); 
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,12 +18,19 @@
 </head>
 <body>
 	<h1>勤怠入力</h1>
-	<button class="attedanceBtn">出勤</button>
-	<button class="attedanceBtn">休憩開始</button>
-	<button class="attedanceBtn">休憩終了</button>
-	<button class="attedanceBtn">退勤</button><br>
-	
+	<h2>氏名 : <%=loginUser.getName() %></h2>
+	<input type="hidden" id="employeeId" value=<%=loginUser.getEmployeeId() %>>
+	<button class="attedanceBtn" value="出勤">出勤</button>
+	<button class="attedanceBtn" value="休憩開始">休憩開始</button>
+	<button class="attedanceBtn" value="休憩終了">休憩終了</button>
+	<button class="attedanceBtn" value="退勤">退勤</button><br>
 	<table class="list" id="attendanceResult">
+	<tr>
+    	<th class=column_name>出勤</th>
+    	<th class=column_name>休憩開始</th>
+    	<th class=column_name>休憩終了</th>
+    	<th class=column_name>退勤</th>
+    	</tr>
 	</table>
 </body>
 </html>

@@ -1,7 +1,9 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -56,7 +58,10 @@ public class AttendanceServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		
+		String attedanceBtn = request.getParameter("attedanceBtn");
+		String strEmployeeId = request.getParameter("employeeId");
+		LocalDate localDate = LocalDate.now();
+		Date currentDate = Date.valueOf(localDate);//workingDayに登録
 	}
 
 }
