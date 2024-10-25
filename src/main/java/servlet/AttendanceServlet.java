@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.dao.AttendanceDAO;
 import model.dao.EmployeeDAO;
 import model.entity.LoginUserBean;
 
@@ -58,10 +59,19 @@ public class AttendanceServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String attedanceBtn = request.getParameter("attedanceBtn");
+		String attedancetype = request.getParameter("attedanceBtn");
 		String strEmployeeId = request.getParameter("employeeId");
 		LocalDate localDate = LocalDate.now();
-		Date currentDate = Date.valueOf(localDate);//workingDayに登録
+		Date workingDay = Date.valueOf(localDate);//workingDayに登録
+		AttendanceDAO attenDao = new AttendanceDAO();
+		try {
+			int employeeId = Integer.parseInt(strEmployeeId);
+			int registCount = attenDao.attendanceRegist(employeeId, workingDay, attedancetype);
+			System.out.println(registCount);
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+			System.out.println("失敗");
+		}
 	}
 
 }
