@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.entity.EmployeeBean;
+import model.entity.LoginUserBean;
 import model.entity.PostBean;
 
 public class EmployeeDAO {
@@ -107,5 +108,20 @@ public class EmployeeDAO {
 		}
 		return deleteCount;
 
+	}
+	public LoginUserBean getLoginEnployeeName(String loginId) throws ClassNotFoundException, SQLException {
+		LoginUserBean loginUser = null;
+		String sql = "SELECT employee_id,name FROM m_employee WHERE login_id = ?;";
+		try (Connection con = ConnectionManager.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql)) {
+				pstmt.setString(1, loginId);
+				ResultSet res = pstmt.executeQuery();
+				if(res.next()) {
+					loginUser = new LoginUserBean();
+					loginUser.setEmployeeId(res.getInt("employee_id"));
+					loginUser.setName(res.getString("name"));
+				}
+			}
+		return loginUser;
 	}
 }

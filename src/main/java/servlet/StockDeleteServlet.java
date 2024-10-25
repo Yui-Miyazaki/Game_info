@@ -1,3 +1,4 @@
+
 package servlet;
 
 import java.io.IOException;
@@ -71,3 +72,4 @@ public class StockDeleteServlet extends HttpServlet {
 	}
 
 }
+

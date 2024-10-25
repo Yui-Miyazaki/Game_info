@@ -5,8 +5,8 @@
 	pageEncoding="UTF-8"%>
 <%
 List<PostBean> postList = (List) session.getAttribute("postList");
-EmployeeBean employee = (EmployeeBean) session.getAttribute("employee");
-String errorMessage = (String)request.getAttribute("errorMessage");
+List<EmployeeBean> updateEmployeeList = (List) session.getAttribute("updateEmployeeList");
+String errorMessage = (String) request.getAttribute("errorMessage");
 %>
 <!DOCTYPE html>
 <html>
@@ -20,8 +20,10 @@ String errorMessage = (String)request.getAttribute("errorMessage");
 <title>更新画面</title>
 </head>
 <body>
-<jsp:include page="../../header/header.jsp" />
+	<jsp:include page="../../header/header.jsp" />
+	<div class="main">
 	<h1>更新する従業員</h1>
+	<%for(EmployeeBean employee : updateEmployeeList) {%>
 	<table border="1" class="list">
 		<tr>
 			<th class="column_name">氏名</th>
@@ -34,55 +36,45 @@ String errorMessage = (String)request.getAttribute("errorMessage");
 			<td><%=employee.getPostName()%></td>
 		</tr>
 	</table>
-	<main>
-		<div class="main">
-		<h2>更新情報入力</h2>
+			<h2>更新情報入力</h2>
 			<form id="employeeUpdateForm" action="employeeUpdate" method="post">
-			<%if(errorMessage != null){ %>
-			<span><%=errorMessage %></span>
+			<%if (errorMessage != null) { %>
+				<span><%=errorMessage%></span>
 			<%} %>
 				<div class="flexItem">
-					<span class="item">氏名</span> 
-					<input type="text" class="textBox" name="name"><br>
+					<span class="item">氏名</span> <input type="text" class="textBox"
+						name="name"><br>
 				</div>
 				<div class="flexItem">
-					<span class="item">年齢</span> 
-					<select name="age" class="selectBox">
-						<%
-						for (int i = 18; i <= 60; i++) {
-						%>
+					<span class="item">年齢</span> <select name="age" class="selectBox">
+						<%for (int i = 18; i <= 60; i++) {%>
 						<option>
 							<%=i%>
 						</option>
-						<%
-						}
-						%>
+						<%}%>
 					</select><br>
 				</div>
 				<div class="flexItem">
 					<span class="item">役職</span> 
 					<select name="postCode" class="selectBox">
-						<%
-						for (PostBean post : postList) {
-						%>
+						<% for (PostBean post : postList) { %>
 						<option value=<%=post.getPostCode()%>>
 							<%=post.getPostName()%>
 						</option>
-						<%
-						}
-						%>
+						<% } %>
 					</select><br>
 				</div>
-				<input type="button" class="btn" value="更新" onclick="audio('employeeUpdateForm')">
+				<% }%>
+				<input type="button" class="btn" value="更新"
+					onclick="audio('employeeUpdateForm')">
 			</form>
 		</div>
 		<form id="employeeListForm" action="employeeList" method="get">
-		<input type="button" class="btn" value="従業員一覧へ" onclick="audio('employeeListForm')">
-	</form>
-	<audio id="btnClick_audio">
-		<source src="sounds/PC-Mouse05-1.mp3" type="audio/mp3">
-	</audio>
-
-	</main>
+			<input type="button" class="btn" value="従業員一覧へ"
+				onclick="audio('employeeListForm')">
+		</form>
+		<audio id="btnClick_audio">
+			<source src="sounds/PC-Mouse05-1.mp3" type="audio/mp3">
+		</audio>
 </body>
 </html>

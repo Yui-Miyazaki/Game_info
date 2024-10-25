@@ -30,12 +30,15 @@
 				</div>
 			</form>
 			<%if((authorityCode != null) && "ADMIN".equals(authorityCode)){ %>
-		<form id="loginUser" action="loginUserList" method="get">
+		<form id="loginUserForm" action="loginUserList" method="get">
 			<div>
-				<button class="loginDeleteBtn"  type="button" onclick="audio('loginUser')">ユーザ一覧</button>
+				<button class="loginDeleteBtn"  type="button" onclick="audio('loginUserForm')">ユーザ一覧</button>
 			</div>
 		</form>
 		<%} %>
+		<form id="attendanceForm" action="attendance" method="get">
+				<button class="btn" type="button" onclick="audio('attendanceForm')">勤怠入力</button>
+		</form>
 		</div>
 		<form id="logoutForm" action="logout" method="get">
 			<div>
