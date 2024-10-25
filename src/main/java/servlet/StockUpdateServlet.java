@@ -33,13 +33,17 @@ public class StockUpdateServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String gameName = request.getParameter("gameName");
-		String itemCode = request.getParameter("itemCode");
+
 		String check = request.getParameter("check");
 		System.out.println(check);
+		String[] updateParts = check.split(",");
+		String gameName = updateParts[0];
+		String itemCode = updateParts[1];
+
 		HttpSession session = request.getSession();
 		session.setAttribute("gameName", gameName);
 		session.setAttribute("itemCode", itemCode);
+		session.setAttribute("check", check);
 		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/game_stock/update/stock_update.jsp");
 		rd.forward(request, response);
 	}
@@ -54,6 +58,7 @@ public class StockUpdateServlet extends HttpServlet {
 		String strPrice = request.getParameter("price");
 		String strRanking = request.getParameter("ranking");
 		String itemCode = request.getParameter("itemCode");
+		System.out.println(itemCode);
 		
 		int stock = Integer.parseInt(strStock);
 		int ranking = Integer.parseInt(strRanking);

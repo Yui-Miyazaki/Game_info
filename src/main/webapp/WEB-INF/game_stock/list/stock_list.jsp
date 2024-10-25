@@ -8,7 +8,7 @@
 <head>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="javaScript/Ajax.js"></script>
+<script src="javaScript/searchResultAjax.js"></script>
 <script src="javaScript/checkBox.js"></script>
 <script src="javaScript/multipleAction.js"></script>
 <meta charset="UTF-8">
@@ -20,7 +20,7 @@
 <title>在庫管理一覧画面</title>
 </head>
 <body>
-	<jsp:include page="../../header/header.jsp" />
+	<!--<jsp:include page="../../header/header.jsp" />-->
 	<h1>在庫管理一覧</h1>
 	<div class="searchForm">
 	<h2>search</h2>
@@ -42,7 +42,7 @@
 	<form id="stockAddForm" action="stockAdd" method="get">
 		<input type="button" class="regist_btn" value="新規登録" onclick="audio('stockAddForm')">
 	</form>
-	<form action="" method="get">
+	<form action="" method="get" id="stockForm" name="searchList">
 	<table border="1" class="list" id="searchResult">
 		<tr>
 			<th class="column_name">ゲームID</th>
@@ -56,8 +56,8 @@
 			<th class="column_name">選択</th>
 		</tr>
 	</table>
-	<input type="hidden" name="gameName" value="gameName">
 	<button type="button" class="btn" id="updateBtn" onclick="multipleaction('stockUpdate')" >更新</button>
+	<input type="hidden" name="gameName">
 	<input type="hidden" name="itemCode">
 	
 	<button type="button" class="btn" 	 onclick="multipleaction('stockDelete')">削除</button>
@@ -77,55 +77,5 @@
 	<audio id="btnClick_audio">
 		<source src="sounds/PC-Mouse05-1.mp3" type="audio/mp3">
 	</audio>
-<script defer>	
-$(".searchBtn").on('click', function() {
-	$.ajax({
-		type: "get",
-		url: "ajax",
-		data: {
-			gameName: $("#gameName").val(),
-			maker: $("#maker").val(),
-			stock: $("#stock").val(),
-			searchBtn : $(this).val(),
-		},
-		dataType: "json"
-	}).done(function(result) {
-		$("#searchResult").empty();
-        $("#searchResult").append(
-        		"<tr>" +
-    			"<th class=\"column_name\">ゲームID</th>" +
-    			"<th class=\"column_name\">ゲーム名</th>" +
-    			"<th class=\"column_name\">メーカー</th>" +
-    			"<th class=\"column_name\">発売日</th>" +
-    			"<th class=\"column_name\">在庫数</th>" +
-    			"<th class=\"column_name\">価格</th>" +
-    			"<th class=\"column_name\">人気</th>" +
-    			"<th class=\"column_name\">商品コード</th>" +
-    			"<th class=\"column_name\">選択</th>" +
-    			"</tr>"
-                );
-		$.each(result, function(index, result) {
-           $("#searchResult").append(
-                   "<tr>"+
-                    "<td>" + result.gameId + "</td>" + 
-                    "<td>" + result.gameName + "</td>" +
-                    "<td>" + result.maker + "</td>" +
-                    "<td>" + result.releseDate + "</td>" +
-                    "<td>" + result.stock + "</td>" +
-                    "<td>" + result.price + "</td>" +
-                    "<td>" + result.ranking + "</td>" +
-                    "<td>" + result.itemCode + "</td>" +
-                    "<td>" + "<input type=\"checkbox\" id=\"check\" name=\"check\" class=\"check\" value=" + result.itemCode + ">" + "</td>" +
-                    "<td>" + "<input type=\"hidden\" name=\"gameName\" value=\"A\">" + "</td>" +
-                    
-                    "</tr>" 
-                   ); 
-        });
-        
-	}).fail(function() {
-		alert("読み込み失敗");
-	});
-});
-</script>
 </body>
 </html>

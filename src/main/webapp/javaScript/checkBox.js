@@ -7,11 +7,3 @@ $(function() {
 		}
 	});
 });
-$(function() {
-	$('#updateBtn').on('click', function() {
-
-		let element = $('#check:checked').val();
-		let itemCode = $('#check:checked').val();
-		console.log(element);
-	});
-});

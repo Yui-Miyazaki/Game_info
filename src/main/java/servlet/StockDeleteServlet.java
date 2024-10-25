@@ -33,9 +33,12 @@ public class StockDeleteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String gameName = request.getParameter("gameName");
-		String itemCode = request.getParameter("itemCode");
-
+		
+		String check = request.getParameter("check");
+		String[] updateParts = check.split(",");
+		String gameName = updateParts[0];
+		String itemCode = updateParts[1];
+		System.out.println(updateParts);
 		HttpSession session = request.getSession();
 		session.setAttribute("gameName", gameName);
 		session.setAttribute("itemCode", itemCode);

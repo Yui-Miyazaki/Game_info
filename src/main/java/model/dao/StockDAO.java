@@ -46,7 +46,7 @@ public class StockDAO {
 			pstmt.setInt(3, ranking);
 			pstmt.setString(4, itemCode);
 			updateCount = pstmt.executeUpdate();
-			System.out.println(updateCount);
+			
 		}
 		return updateCount;
 	}

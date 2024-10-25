@@ -1,4 +1,5 @@
-	$(".searchBtn").on('click', function() {
+$(function() {
+$(".searchBtn").on('click', function() {
 	$.ajax({
 		type: "get",
 		url: "ajax",
@@ -35,22 +36,13 @@
                     "<td>" + result.price + "</td>" +
                     "<td>" + result.ranking + "</td>" +
                     "<td>" + result.itemCode + "</td>" +
-                    "<td>" + "<input type=\"checkbox\" name=\"check\" class=\"check\"></td>" +
-                    "</tr>" +
-                    "<input type=\"button\" class=\"btn\" value=\"更新\">" +
-               	    "<input type=\"hidden\" name=\"gameName\" value=\"result.gameName\">" +
-               	    "<input type=\"hidden\" name=\"itemCode\" value=\"result.itemCode\">" +
-                    "<input type=\"button\" class=\"btn\" value=\"削除\">" +
-               	    "<input type=\"hidden\" name=\"gameName\" value=\"result.gameName\">" +
-               	    "<input type=\"hidden\" name=\"itemCode\" value=\"result.itemCode\">" 
+                    "<td>" + "<input type=\"checkbox\" id=\"check\" name=\"check\" class=\"check\" value=" + result.gameName + "," + result.itemCode + " >" + "</td>" + 
+                    "</tr>" 
                    ); 
-       
         });
         
 	}).fail(function() {
-
 		alert("読み込み失敗");
-
 	});
 });
-
+});
