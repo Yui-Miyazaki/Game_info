@@ -39,6 +39,9 @@
 		}
 		%>
 	</table>
+	<form id="loginRegisterForm" action="loginRegister" method="get">
+			<input type="button" class="btn" value="新規登録" onclick="audio('loginRegisterForm')">
+		</form><br>
 	<form id="menuForm" action="menu" method="get">
 		<input type="button" class="btn" value="メニュー画面" onclick="audio('menuForm')">
 	</form>
