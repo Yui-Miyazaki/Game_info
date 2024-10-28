@@ -22,7 +22,7 @@ public class HashSolt {
         //md.digestでハッシュ値（byte配列）を生成して変数に格納
         byte[] hashBytes = md.digest();
         //byte型のハッシュ値をString型に変換
-         hashPass = Base64.getEncoder().encodeToString(hashBytes);
+        hashPass = Base64.getEncoder().encodeToString(hashBytes);
     } catch (NoSuchAlgorithmException e) {
         e.printStackTrace();
     }
