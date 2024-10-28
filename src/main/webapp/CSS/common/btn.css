@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 .update_btn {
-	width: 80px;
+	width: 100px;
 	height: 40px;
 	border-radius: 10px;
 	background-color: limegreen;
@@ -21,7 +21,7 @@
 }
 
 .deleteBtn {
-	width: 80px;
+	width: 100px;
 	height: 40px;
 	border-radius: 10px;
 	background-color: orange;
@@ -51,7 +51,7 @@
 }
 
 .regist_btn {
-	width: 130px;
+	width: 100px;
 	height: 40px;
 	border-radius: 10px;
 	background-color: deepskyblue;
@@ -78,6 +78,16 @@
 	color: #000;
 	font-weight: 900;
 	border: 6px outset darkgreen;
+}
+
+.crudButtons{
+	width: 500px;
+	height: 100px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
+.crudButtons button:not(:last-child) {
+	margin-right: 40px;
 }
 
 .btn:hover,

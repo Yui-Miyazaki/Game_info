@@ -4,7 +4,6 @@
 	pageEncoding="UTF-8"%>
 <%
 List<EmployeeBean> employeeList = (List) session.getAttribute("employeeList");
-String errorMessage = (String)request.getAttribute("errorMessage");
 %>
 <!DOCTYPE html>
 <html>
@@ -20,7 +19,6 @@ String errorMessage = (String)request.getAttribute("errorMessage");
 <body>
 	<jsp:include page="../../header/header.jsp" />
 	<h1>従業員一覧</h1>
-	<h1><%=errorMessage %></h1>
 	<form id="employeeForm" method="get">
 	<table border="1" class="list">
 		<tr>

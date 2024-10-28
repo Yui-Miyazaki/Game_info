@@ -27,7 +27,7 @@ $(".searchBtn").on('click', function() {
                 );
 		$.each(result, function(index, result) {
            $("#searchResult").append(
-                   "<tr>"+
+                   "<tr class=\"selectRecord\">"+ 
                     "<td>" + result.gameId + "</td>" + 
                     "<td>" + result.gameName + "</td>" +
                     "<td>" + result.maker + "</td>" +

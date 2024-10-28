@@ -1,7 +1,4 @@
 @charset "UTF-8";
-
-
-
 .list {
 	max-height: 450px;
 	display: inline-block;
@@ -11,11 +8,7 @@
 	border-color: limegreen;
 	overflow-y: scroll;
 	scrollbar-color: grey black;
-	
-
 }
-
-
 .column_name {
 	background-color: limegreen;
 	color: black;
@@ -23,7 +16,6 @@
 	position: sticky;
 	top: 0px;
 }
-
 .logout_btn {
 	margin: top 30px;
 }

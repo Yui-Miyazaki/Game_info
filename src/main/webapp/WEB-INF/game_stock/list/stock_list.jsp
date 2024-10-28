@@ -2,7 +2,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%List<GameBean> searchResultList = (List<GameBean>)session.getAttribute("searchResultList"); %>
+<%String errorMessage = (String)request.getAttribute("errorMessage");%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +20,7 @@
 <title>在庫管理一覧画面</title>
 </head>
 <body>
-	<!--<jsp:include page="../../header/header.jsp" />-->
+	<jsp:include page="../../header/header.jsp" />
 	<h1>在庫管理一覧</h1>
 	<div class="searchForm">
 	<h2>search</h2>
@@ -30,7 +30,7 @@
 	<input type="text" class="textBox" name="maker" id="maker" placeholder="メーカー名を入力してください。">
 	<span>在庫数</span>
 	<select  name="stock"class="selectBox" id="stock">
-		<%for(int i = 1;i <= 10;i++) {%>
+		<%for(int i = 0;i <= 10;i++) {%>
 			<option><%=i %></option>
 		<%} %>
 	</select>
@@ -38,10 +38,9 @@
 	<input type="button" class="searchBtn" id="allBtn" name="allGetBtn" value="全件表示" onclick="audio('searchForm')">
 	
 	</div>
-	<div class="btnform">
-	<form id="stockAddForm" action="stockAdd" method="get">
-		<input type="button" class="regist_btn" value="新規登録" onclick="audio('stockAddForm')">
-	</form>
+	<%if(errorMessage != null){%>
+		<span class="errorMessage"><%=errorMessage %></span>
+	<%} %>
 	<form action="" method="get" id="stockForm" name="searchList">
 	<table border="1" class="list" id="searchResult">
 		<tr>
@@ -55,25 +54,13 @@
 			<th class="column_name">商品コード</th>
 			<th class="column_name">選択</th>
 		</tr>
-	</table>
-	<button type="button" class="btn" id="updateBtn" onclick="multipleaction('stockUpdate')" >更新</button>
-	<input type="hidden" name="gameName">
-	<input type="hidden" name="itemCode">
-	
-	<button type="button" class="btn" 	 onclick="multipleaction('stockDelete')">削除</button>
-	<input type="hidden" name="gameName">
-	<input type="hidden" name="itemCode">
-	</form>
+	</table><br>
+	<div class="crudButtons">
+	<button type="button" class="update_btn" onclick="multipleaction('stockUpdate')" >更新</button>
+	<button type="button" class="deleteBtn" onclick="multipleaction('stockDelete')">削除</button>
+	<button type="button" class="regist_btn" onclick="multipleaction('stockAdd')">新規登録</button>
 	</div>
-
-	<form id="menuForm" action="menu" method="get">
-	<input type="button" class="btn" value="メニュー画面へ" onclick="audio('menuForm')">
-	</form><br>
-	<div class="logout_btn">
-	<form id="logoutForm" action="logout" method="get">
-		<input type="button" class="resetBtn" value="ログアウト" onclick="audio('logoutForm')">
 	</form>
-	</div>
 	<audio id="btnClick_audio">
 		<source src="sounds/PC-Mouse05-1.mp3" type="audio/mp3">
 	</audio>
