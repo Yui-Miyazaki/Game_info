@@ -10,7 +10,6 @@ List<EmployeeBean> employeeList = (List) session.getAttribute("employeeList");
 <head>
 <meta charset="UTF-8">
 <script src="javaScript/common.js"></script>
-<script src="javaScript/form.js"></script>
 <link rel="stylesheet" href="CSS/common/common.css">
 <link rel="stylesheet" href="CSS/common/btn.css">
 <link rel="stylesheet" href="CSS/registPageCSS/list_page.css">
@@ -19,13 +18,18 @@ List<EmployeeBean> employeeList = (List) session.getAttribute("employeeList");
 <body>
 	<jsp:include page="../../header/header.jsp" />
 	<h1>従業員一覧</h1>
-	<form id="employeeForm" method="get">
 	<table border="1" class="list">
 		<tr>
 			<th class="column_name">社員番号</th>
 			<th class="column_name">氏名</th>
+			<th class="column_name">ログインID</th>
 			<th class="column_name">年齢</th>
 			<th class="column_name">役職</th>
+			<th class="column_name" colspan="2">
+				<form id="employeeAddForm" action="employeeAdd" method="get">
+					<input type="button" class="regist_btn" value="新規登録" onclick="audio('employeeAddForm')">
+				</form>
+			</th>
 		</tr>
 		<%
 		for (EmployeeBean employee : employeeList) {
@@ -33,22 +37,26 @@ List<EmployeeBean> employeeList = (List) session.getAttribute("employeeList");
 		<tr>
 			<td><%=employee.getEmployeeId()%></td>
 			<td><%=employee.getName()%></td>
+			<td><%=employee.getLoginId()%></td>
 			<td><%=employee.getAge()%></td>
 			<td><%=employee.getPostName()%></td>
 			<td>
-				<input type="checkbox" name="employeeId" value=<%=employee.getEmployeeId()%>>
+				<form id="employeeUpdateForm_<%=employee.getEmployeeId() %>" action="employeeUpdate" method="get">
+					<input type="hidden" name="employeeId" value=<%=employee.getEmployeeId()%>> 
+					<input type="button" class="update_btn" value="更新" onclick="audio('employeeUpdateForm_<%=employee.getEmployeeId() %>')">
+				</form>
+			</td>
+			<td>
+				<form id="employeeDeleteForm_<%=employee.getEmployeeId()%>" action="employeeDelete" method="get">
+					<input type="hidden" name="employeeId" value=<%=employee.getEmployeeId()%>> 
+					<input type="button" class="deleteBtn" value="削除" onclick="audio('employeeDeleteForm_<%=employee.getEmployeeId()%>')">
+				</form>
 			</td>
 		</tr>
 		<%
 		}
 		%>
 	</table>
-	<input type="button" class="update_btn" value="更新" onclick="submitForm('employeeUpdate')">
-	<input type="button" class="deleteBtn" value="削除" onclick="submitForm('employeeDelete')">
-	</form>
-	<!--  <form id="employeeAddForm" action="employeeAdd" method="get">
-					<input type="button" class="regist_btn" value="新規登録" onclick="audio('employeeAddForm')">
-				</form>-->
 	<form id="menuForm" action="menu" method="get">
 		<input type="button" class="btn" value="メニュー画面" onclick="audio('menuForm')">
 	</form>
