@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.dao.StockDAO;
 import model.entity.GameBean;
@@ -46,7 +47,8 @@ public class StockSearchServlet extends HttpServlet {
 		StockDAO dao = new StockDAO();
 		try {
 			List<GameBean> searchResultList = dao.getGameSearch(gameName, maker, stock);
-			request.setAttribute("searchResultList", searchResultList);
+			HttpSession session = request.getSession();
+			session.setAttribute("searchResultList", searchResultList);
 			if (searchResultList.isEmpty()) {
 				String error = "検索結果がありませんでした";
 				request.setAttribute("error", error);

@@ -8,12 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.entity.EmployeeBean;
+import model.entity.LoginUserBean;
 import model.entity.PostBean;
 
 public class EmployeeDAO {
 	public List<EmployeeBean> getEmployeeList() throws ClassNotFoundException, SQLException {
 		List<EmployeeBean> employeeList = new ArrayList<EmployeeBean>();
-		String sql = "SELECT t1.employee_id, t1.name, t1.age, t2.post_name "
+		String sql = "SELECT t1.employee_id, t1.name,t1.login_id, t1.age, t2.post_name "
 				+ "FROM m_employee t1 JOIN m_post t2 "
 				+ "ON t1.post_code = t2.post_code";
 		try (Connection con = ConnectionManager.getConnection();
@@ -24,6 +25,7 @@ public class EmployeeDAO {
 				EmployeeBean employee = new EmployeeBean();
 				employee.setEmployeeId(res.getInt("employee_id"));
 				employee.setName(res.getString("name"));
+				employee.setLoginId(res.getString("login_id"));
 				employee.setAge(res.getString("age"));
 				employee.setPostName(res.getString("post_name"));
 				employeeList.add(employee);
@@ -107,5 +109,20 @@ public class EmployeeDAO {
 		}
 		return deleteCount;
 
+	}
+	public LoginUserBean getLoginEnployeeName(String loginId) throws ClassNotFoundException, SQLException {
+		LoginUserBean loginUser = null;
+		String sql = "SELECT employee_id,name FROM m_employee WHERE login_id = ?;";
+		try (Connection con = ConnectionManager.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql)) {
+				pstmt.setString(1, loginId);
+				ResultSet res = pstmt.executeQuery();
+				if(res.next()) {
+					loginUser = new LoginUserBean();
+					loginUser.setEmployeeId(res.getInt("employee_id"));
+					loginUser.setName(res.getString("name"));
+				}
+			}
+		return loginUser;
 	}
 }

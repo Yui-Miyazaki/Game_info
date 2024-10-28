@@ -1,4 +1,6 @@
-
+.flexBox{
+	display: flex;
+}
 .main{
 	width: 400px;
 	margin:0 auto;	
