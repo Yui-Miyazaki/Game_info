@@ -1,3 +1,4 @@
+
 package servlet;
 
 import java.io.IOException;
@@ -33,13 +34,21 @@ public class StockDeleteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String gameName = request.getParameter("gameName");
-		String itemCode = request.getParameter("itemCode");
-
+		String url = "WEB-INF/game_stock/delete/stock_delete.jsp";
+		String check = request.getParameter("check");
+		if(check != null) {
+		String[] updateParts = check.split(",");
+		String gameName = updateParts[0];
+		String itemCode = updateParts[1];
 		HttpSession session = request.getSession();
 		session.setAttribute("gameName", gameName);
 		session.setAttribute("itemCode", itemCode);
-		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/game_stock/delete/stock_delete.jsp");
+		}else {
+			url ="WEB-INF/game_stock/list/stock_list.jsp";
+			String errorMessage = "チェックを入れてください。";
+			request.setAttribute("errorMessage", errorMessage);
+		}
+		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
 		
 	}
@@ -68,3 +77,4 @@ public class StockDeleteServlet extends HttpServlet {
 	}
 
 }
+

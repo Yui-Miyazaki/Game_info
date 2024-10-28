@@ -2,6 +2,7 @@ package model.entity;
 
 public class EmployeeBean {
 	private int employeeId;
+	private String loginId;
 	private String name;
 	private String age;
 	private String postName;
@@ -16,6 +17,14 @@ public class EmployeeBean {
 
 	public void setEmployeeId(int employeeId) {
 		this.employeeId = employeeId;
+	}
+
+	public String getLoginId() {
+		return loginId;
+	}
+
+	public void setLoginId(String loginId) {
+		this.loginId = loginId;
 	}
 
 	public String getName() {
@@ -41,5 +50,5 @@ public class EmployeeBean {
 	public void setPostName(String postName) {
 		this.postName = postName;
 	}
-
+	
 }

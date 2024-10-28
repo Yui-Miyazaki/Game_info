@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 .update_btn {
-	width: 80px;
+	width: 100px;
 	height: 40px;
 	border-radius: 10px;
 	background-color: limegreen;
@@ -21,7 +21,7 @@
 }
 
 .deleteBtn {
-	width: 80px;
+	width: 100px;
 	height: 40px;
 	border-radius: 10px;
 	background-color: orange;
@@ -40,8 +40,18 @@
 	border: 6px outset darkgreen;
 }
 
-.regist_btn {
+.searchBtn {
 	width: 130px;
+	height: 40px;
+	border-radius: 10px;
+	background-color: limegreen;
+	color: #000;
+	font-weight: 900;
+	border: 6px outset darkgreen;
+}
+
+.regist_btn {
+	width: 100px;
 	height: 40px;
 	border-radius: 10px;
 	background-color: deepskyblue;
@@ -49,6 +59,7 @@
 	font-weight: 900;
 	border: 6px outset dodgerblue;
 }
+
 .loginDeleteBtn {
 	width: 130px;
 	height: 40px;
@@ -57,6 +68,26 @@
 	border: 6px outset darkorange;
 	color: black;
 	font-weight: 900;
+}
+
+.attedanceBtn {
+	width: 130px;
+	height: 40px;
+	border-radius: 10px;
+	background-color: limegreen;
+	color: #000;
+	font-weight: 900;
+	border: 6px outset darkgreen;
+}
+
+.crudButtons{
+	width: 500px;
+	height: 100px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
+.crudButtons button:not(:last-child) {
+	margin-right: 40px;
 }
 
 .btn:hover,
@@ -74,7 +105,8 @@
 	background-color: orangered;
 	color: white;
 }
-.loginDeleteBtn:hover{
+
+.loginDeleteBtn:hover {
 	background-color: orangered;
 	color: white;
 }

@@ -13,16 +13,9 @@ public class HashSolt {
         String salt = Base64.getEncoder().encodeToString(byteSalt);
 		return salt;
 	}
-	
-	
 	public String getHashPass(String salt,String password) {
-
 	String hashPass = null;
-	
 	try {
-        
-		
-		
         MessageDigest md = MessageDigest.getInstance("SHA-256");
         md.update(salt.getBytes());
         md.update(password.getBytes());
@@ -30,14 +23,9 @@ public class HashSolt {
         byte[] hashBytes = md.digest();
         //byte型のハッシュ値をString型に変換
          hashPass = Base64.getEncoder().encodeToString(hashBytes);
-        
- 
-
-        System.out.println("Salted Hashed Password: " + hashPass);
     } catch (NoSuchAlgorithmException e) {
         e.printStackTrace();
     }
 	return hashPass;
-	
 }
 }

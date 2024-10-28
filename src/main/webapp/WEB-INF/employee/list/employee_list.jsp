@@ -22,6 +22,7 @@ List<EmployeeBean> employeeList = (List) session.getAttribute("employeeList");
 		<tr>
 			<th class="column_name">社員番号</th>
 			<th class="column_name">氏名</th>
+			<th class="column_name">ログインID</th>
 			<th class="column_name">年齢</th>
 			<th class="column_name">役職</th>
 			<th class="column_name" colspan="2">
@@ -36,6 +37,7 @@ List<EmployeeBean> employeeList = (List) session.getAttribute("employeeList");
 		<tr>
 			<td><%=employee.getEmployeeId()%></td>
 			<td><%=employee.getName()%></td>
+			<td><%=employee.getLoginId()%></td>
 			<td><%=employee.getAge()%></td>
 			<td><%=employee.getPostName()%></td>
 			<td>

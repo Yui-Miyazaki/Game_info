@@ -1,3 +1,4 @@
+
 package servlet;
 
 import java.io.IOException;
@@ -33,13 +34,23 @@ public class StockUpdateServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String gameName = request.getParameter("gameName");
-		String itemCode = request.getParameter("itemCode");
+		String url = "WEB-INF/game_stock/update/stock_update.jsp";
+		String check = request.getParameter("check");
+		if(check != null) {
+		String[] updateParts = check.split(",");
+		String gameName = updateParts[0];
+		String itemCode = updateParts[1];
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("gameName", gameName);
 		session.setAttribute("itemCode", itemCode);
-		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/game_stock/update/stock_update.jsp");
+		session.setAttribute("check", check);
+		}else {
+			url ="WEB-INF/game_stock/list/stock_list.jsp";
+			String errorMessage = "チェックを入れてください。";
+			request.setAttribute("errorMessage", errorMessage);
+		}
+		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
 	}
 
@@ -53,6 +64,7 @@ public class StockUpdateServlet extends HttpServlet {
 		String strPrice = request.getParameter("price");
 		String strRanking = request.getParameter("ranking");
 		String itemCode = request.getParameter("itemCode");
+		System.out.println(itemCode);
 		
 		int stock = Integer.parseInt(strStock);
 		int ranking = Integer.parseInt(strRanking);

@@ -38,7 +38,7 @@ public class LoginDAO {
 			while(res.next()) {
 				 salt = res.getString("salt");
 			}
-			System.out.println(salt);
+		
 		}
 		return salt;
 	}

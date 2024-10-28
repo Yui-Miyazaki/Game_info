@@ -3,6 +3,7 @@
 <%
 String gameName = (String) session.getAttribute("gameName");
 String itemCode = (String) session.getAttribute("itemCode");
+
 %>
 <!DOCTYPE html>
 <html>
