@@ -64,6 +64,7 @@ public class EmployeeAddServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String url = "WEB-INF/employee/add/employee_add.jsp";
+		String loginId = request.getParameter("loginId");
 		String name = StringEscapeUtils.escapeHtml4(request.getParameter("name"));
 		String strAge = request.getParameter("age");
 		String postCode = request.getParameter("postCode");
@@ -78,7 +79,7 @@ public class EmployeeAddServlet extends HttpServlet {
 				errorMessage = "1文字以上32文字以内で入力してください。";
 			//正常処理
 			} else {
-				int addEmployeeCount = dao.addEmployee(name, age, postCode);
+				int addEmployeeCount = dao.addEmployee(loginId, name, age, postCode);
 				if (addEmployeeCount > 0) {
 					url = "WEB-INF/employee/add/employeeAdd_success.jsp";
 				} else {

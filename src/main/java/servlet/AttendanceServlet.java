@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpSession;
 
 import model.dao.AttendanceDAO;
 import model.dao.EmployeeDAO;
+import model.entity.AttendanceBean;
 import model.entity.LoginUserBean;
 
 /**
@@ -63,11 +65,15 @@ public class AttendanceServlet extends HttpServlet {
 		String strEmployeeId = request.getParameter("employeeId");
 		LocalDate localDate = LocalDate.now();
 		Date workingDay = Date.valueOf(localDate);//workingDayに登録
-		AttendanceDAO attenDao = new AttendanceDAO();
+		AttendanceDAO attenDao = new AttendanceDAO(); 
 		try {
 			int employeeId = Integer.parseInt(strEmployeeId);
 			int registCount = attenDao.attendanceRegist(employeeId, workingDay, attedancetype);
-			System.out.println(registCount);
+			List<AttendanceBean> attendanceList = attenDao.getAttendanceList(employeeId);
+			System.out.println(attendanceList.get(0).getClockIn());
+			HttpSession session = request.getSession();
+			session.setAttribute("attendanceList", attendanceList);
+			
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 			System.out.println("失敗");

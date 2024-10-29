@@ -26,6 +26,9 @@ String errorMessage = (String)request.getAttribute("errorMessage");
 			<span><%=errorMessage %></span>
 		<%} %>
 		<div class="flexItem">
+			<span class="item">ログインID</span> <input type="text" class="textBox" name="loginId"><br>
+		</div>
+		<div class="flexItem">
 			<span class="item">氏名</span> <input type="text" class="textBox" name="name"><br>
 		</div>
 		<div class="flexItem">

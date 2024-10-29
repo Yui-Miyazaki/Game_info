@@ -38,13 +38,12 @@ public class EmployeeListServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String url = "WEB-INF/employee/list/employee_list.jsp";
-		System.out.println("t");
 		EmployeeDAO dao = new EmployeeDAO();
 		try {
 			List<EmployeeBean> employeeList = dao.getEmployeeList();
 			HttpSession session = request.getSession();
 			session.setAttribute("employeeList", employeeList);
-			System.out.println(employeeList);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

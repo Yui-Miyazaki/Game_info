@@ -1,9 +1,13 @@
+<%@page import="model.entity.AttendanceBean"%>
+<%@page import="java.util.List"%>
 <%@page import="model.entity.LoginUserBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% 
-	LoginUserBean loginUser = (LoginUserBean)session.getAttribute("loginUser"); 
+	LoginUserBean loginUser = (LoginUserBean)session.getAttribute("loginUser");
+	List<AttendanceBean> attendanceList = (List) session.getAttribute("attendanceList");
 %>
+<%=attendanceList %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +22,7 @@
 </head>
 <body>
 	<h1>勤怠入力</h1>
-	<h2>氏名 : <%=loginUser.getName() %></h2>
+    <h2>氏名 : <%=loginUser.getName() %></h2>
 	<input type="hidden" id="employeeId" value=<%=loginUser.getEmployeeId() %>>
 	<button class="attedanceBtn" value="出勤">出勤</button>
 	<button class="attedanceBtn" value="休憩開始">休憩開始</button>
@@ -31,6 +35,16 @@
     	<th class=column_name>休憩終了</th>
     	<th class=column_name>退勤</th>
     	</tr>
+    	<%
+    	if(attendanceList != null){
+    	%>
+    	<%for (AttendanceBean attenList : attendanceList){ %>
+    	<tr>
+    	<td><%=attenList.getWorkingDay() %> </td>
+    	<td><%=attenList.getClockIn() %></td>
+    	</tr>
+    	<%} %>
+    	<%} %>
 	</table>
 </body>
 </html>

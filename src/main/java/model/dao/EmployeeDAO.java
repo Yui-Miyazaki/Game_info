@@ -34,14 +34,15 @@ public class EmployeeDAO {
 		return employeeList;
 	}
 
-	public int addEmployee(String name, int age, String postCode) throws ClassNotFoundException, SQLException {
-		String sql = "INSERT INTO m_employee(name,age,post_code) VALUES(?,?,?)";
+	public int addEmployee(String loginId, String name, int age, String postCode) throws ClassNotFoundException, SQLException {
+		String sql = "INSERT INTO m_employee(login_id,name,age,post_code) VALUES(?,?,?,?)";
 		int addEmployeeCount = 0;
 		try (Connection con = ConnectionManager.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql)) {
-			pstmt.setString(1, name);
-			pstmt.setInt(2, age);
-			pstmt.setString(3, postCode);
+			pstmt.setString(1, loginId);
+			pstmt.setString(2, name);
+			pstmt.setInt(3, age);
+			pstmt.setString(4, postCode);
 			addEmployeeCount = pstmt.executeUpdate();
 			System.out.println(addEmployeeCount);
 		}
