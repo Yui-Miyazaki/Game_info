@@ -28,9 +28,6 @@ String errorMessage = (String)request.getAttribute("errorMessage");
 			<input type="button" class="btn" value="ログイン" onclick="audio('loginForm')">
 		</form>
 	</div>
-		<form id="loginRegisterForm" action="loginRegister" method="get">
-			<input type="button" class="btn" value="新規登録" onclick="audio('loginRegisterForm')">
-		</form>
 	</main>
 	<audio id="btnClick_audio">
 		<source src="sounds/PC-Mouse05-1.mp3" type="audio/mp3">

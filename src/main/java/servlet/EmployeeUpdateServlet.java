@@ -77,7 +77,6 @@ public class EmployeeUpdateServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String url = "WEB-INF/employee/update/employee_update.jsp";
 		HttpSession session = request.getSession();
-		String[] nameList = request.getParameterValues("name");
 		int employeeId = (int) session.getAttribute("employeeId");
 		String name = StringEscapeUtils.escapeHtml4(request.getParameter("name"));
 		String strAge = request.getParameter("age");
