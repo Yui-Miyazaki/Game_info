@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import model.dao.AttendanceDAO;
 import model.dao.EmployeeDAO;
 import model.entity.AttendanceBean;
@@ -70,10 +72,12 @@ public class AttendanceServlet extends HttpServlet {
 			int employeeId = Integer.parseInt(strEmployeeId);
 			int registCount = attenDao.attendanceRegist(employeeId, workingDay, attedancetype);
 			List<AttendanceBean> attendanceList = attenDao.getAttendanceList(employeeId);
-			System.out.println(attendanceList.get(0).getClockIn());
-			HttpSession session = request.getSession();
-			session.setAttribute("attendanceList", attendanceList);
-			
+			System.out.println(attendanceList);
+			response.setContentType("application/json");
+			response.setCharacterEncoding("UTF-8");
+			ObjectMapper mapper = new ObjectMapper();
+			String json = mapper.writeValueAsString(attendanceList);
+			response.getWriter().write(json);
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 			System.out.println("失敗");

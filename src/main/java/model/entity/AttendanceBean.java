@@ -3,9 +3,10 @@ package model.entity;
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDate;
 
 public class AttendanceBean implements Serializable {
-	private Date workingDay;
+	private LocalDate workingDay;
 	private Time clockIn;
 	private Time breakIn;
 	private Time breakEnd;
@@ -14,13 +15,7 @@ public class AttendanceBean implements Serializable {
 	public AttendanceBean() {	
 	}
 
-	public Date getWorkingDay() {
-		return workingDay;
-	}
 
-	public void setWorkingDay(Date workingDay) {
-		this.workingDay = workingDay;
-	}
 
 	public Time getClockIn() {
 		return clockIn;
@@ -52,6 +47,19 @@ public class AttendanceBean implements Serializable {
 
 	public void setClockEnd(Time clockEnd) {
 		this.clockEnd = clockEnd;
+	}
+
+
+
+	public LocalDate getWorkingDay() {
+		return workingDay;
+	}
+
+
+
+	public void setWorkingDay(Date workingDay) {
+		this.workingDay = workingDay.toLocalDate();
+		System.out.println(workingDay);
 	}
 
 	}
