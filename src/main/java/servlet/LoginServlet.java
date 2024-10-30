@@ -48,27 +48,27 @@ public class LoginServlet extends HttpServlet {
 		String url = "WEB-INF/menu/menu.jsp";
 		String loginId = request.getParameter("loginId");
 		String password = request.getParameter("password");
-		
+
 		LoginDAO loginDao = new LoginDAO();
 		try {
 			String salt = loginDao.getSalt(loginId);
-			if(salt != null) {
-				
+			if (salt != null) {
+
 				HashSolt hashSalt = new HashSolt();
 				String hashPass = hashSalt.getHashPass(salt, password);
 				String authorityCode = loginDao.loginCheck(loginId, hashPass);
-				
-				if(authorityCode != null) {
+
+				if (authorityCode != null) {
 					HttpSession session = request.getSession();
-					session.setAttribute("loginId",loginId);
+					session.setAttribute("loginId", loginId);
 					session.setAttribute("authorityCode", authorityCode);
-				}else {
+				} else {
 					url = "login.jsp";
 					String errorMessage = "ログイン認証に失敗しました。";
 					request.setAttribute("errorMessage", errorMessage);
 				}
-			}else {
-				url ="login.jsp";
+			} else {
+				url = "login.jsp";
 				String errorMessage = "ユーザーが登録されていません。";
 				request.setAttribute("errorMessage", errorMessage);
 			}

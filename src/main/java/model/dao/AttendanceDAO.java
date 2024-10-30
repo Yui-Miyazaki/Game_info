@@ -22,10 +22,10 @@ public class AttendanceDAO {
 			        + "WHERE employee_id = ? AND working_day = ?";
 		}else if("休憩終了".equals(attendanceType)) {
 			sql =  "UPDATE t_Attendance SET break_end = CURRENT_TIME "
-			        + "WHERE employee_id = ? AND working_day = ?";
+			        + "WHERE employee_id = ? AND working_day = ? AND break_in IS NOT NULL";
 		}else if("退勤".equals(attendanceType)) {
 			sql =  "UPDATE t_Attendance SET clock_end = CURRENT_TIME "
-			        + "WHERE employee_id = ? AND working_day = ?";
+			        + "WHERE employee_id = ? AND working_day = ? AND break_end IS NOT NULL";
 		}
 		try(Connection con = ConnectionManager.getConnection();
 			PreparedStatement pstmt = con.prepareStatement(sql);){

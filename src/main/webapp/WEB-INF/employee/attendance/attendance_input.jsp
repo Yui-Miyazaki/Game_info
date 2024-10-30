@@ -4,7 +4,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% 
-	LoginUserBean loginUser = (LoginUserBean)session.getAttribute("loginUser");	
+	LoginUserBean loginUser = (LoginUserBean)session.getAttribute("loginUser");
+	String error = (String)session.getAttribute("error");
 %>
 
 <!DOCTYPE html>
@@ -23,6 +24,9 @@
 	<h1>勤怠入力</h1>
     <h2>氏名 : <%=loginUser.getName() %></h2>
 	<input type="hidden" id="employeeId" value=<%=loginUser.getEmployeeId() %>>
+	<%if(error != null) {%>
+	<%=error %>
+	<%} %>
 	<button class="attedanceBtn" value="出勤">出勤</button>
 	<button class="attedanceBtn" value="休憩開始">休憩開始</button>
 	<button class="attedanceBtn" value="休憩終了">休憩終了</button>

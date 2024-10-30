@@ -8,7 +8,7 @@ $(".attedanceBtn").on('click', function() {
 		},
 		dataType : "json"
 	}).done(function(result) {
-		console.log(result);
+		console.log(result.error);
 		$("#attendanceResult").empty();
 		$("#attendanceResult").append(
 			"<tr>" +
@@ -22,13 +22,25 @@ $(".attedanceBtn").on('click', function() {
 			);
 			
 			$.each(result, function(index, result) {
+				let breakIn = result.breakIn;
+				if(breakIn === null){
+					breakIn = "未入力";
+				}
+				let breakEnd = result.breakEnd;
+				if(breakEnd === null){
+					breakEnd = "未入力";
+				}
+				let clockEnd = result.clockEnd;
+				if(clockEnd === null){
+					clockEnd = "未入力";
+				}
            $("#attendanceResult").append(
                    "<tr>"+ 
                     "<td>" + result.workingDay + "</td>" + 
                     "<td>" + result.clockIn + "</td>" +
-                    "<td>" + result.breakIn + "</td>" + 
-                    "<td>" + result.breakEnd + "</td>" +
-                    "<td>" + result.clockEnd + "</td>" +
+                    "<td>" + breakIn + "</td>" + 
+                    "<td>" + breakEnd + "</td>" +
+                    "<td>" + clockEnd + "</td>" +
                     "</tr>"
 		);
 	});

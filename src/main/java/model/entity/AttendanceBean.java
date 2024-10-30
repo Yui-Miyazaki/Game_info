@@ -3,10 +3,10 @@ package model.entity;
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
-import java.time.LocalDate;
+import java.text.SimpleDateFormat;
 
 public class AttendanceBean implements Serializable {
-	private LocalDate workingDay;
+	private String workingDay;
 	private Time clockIn;
 	private Time breakIn;
 	private Time breakEnd;
@@ -50,17 +50,20 @@ public class AttendanceBean implements Serializable {
 	}
 
 
-
-	public LocalDate getWorkingDay() {
+	public String getWorkingDay() {
 		return workingDay;
 	}
-
-
-
-	public void setWorkingDay(Date workingDay) {
-		this.workingDay = workingDay.toLocalDate();
-		System.out.println(workingDay);
+ 
+	public void setWorkingDay(Date sqlWorkingDay) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); // 必要な形式を指定
+        String workingDay = dateFormat.format(sqlWorkingDay);
+		this.workingDay = workingDay;
 	}
+ 
+
+
+
+
 
 	}
 		

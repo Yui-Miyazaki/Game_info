@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -68,20 +69,27 @@ public class AttendanceServlet extends HttpServlet {
 		LocalDate localDate = LocalDate.now();
 		Date workingDay = Date.valueOf(localDate);//workingDayに登録
 		AttendanceDAO attenDao = new AttendanceDAO(); 
+		String error = null;
+		
 		try {
 			int employeeId = Integer.parseInt(strEmployeeId);
 			int registCount = attenDao.attendanceRegist(employeeId, workingDay, attedancetype);
 			List<AttendanceBean> attendanceList = attenDao.getAttendanceList(employeeId);
-			System.out.println(attendanceList);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
 			ObjectMapper mapper = new ObjectMapper();
 			String json = mapper.writeValueAsString(attendanceList);
 			response.getWriter().write(json);
+			if(registCount == 0 ) {
+				error = mapper.writeValueAsString(Map.of("error","未入力です。"));
+			}
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
+			error = "出勤は登録済みです。";
+			
 			System.out.println("失敗");
 		}
+		
 	}
 
 }
