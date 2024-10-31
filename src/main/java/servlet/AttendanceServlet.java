@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -64,32 +65,32 @@ public class AttendanceServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		System.out.println("a");
 		String attedancetype = request.getParameter("attedanceBtn");
 		String strEmployeeId = request.getParameter("employeeId");
 		LocalDate localDate = LocalDate.now();
 		Date workingDay = Date.valueOf(localDate);//workingDayに登録
 		AttendanceDAO attenDao = new AttendanceDAO(); 
-		String error = null;
-		
+	    int status = 200;
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		List<AttendanceBean> attendanceList = null;
 		try {
 			int employeeId = Integer.parseInt(strEmployeeId);
 			int registCount = attenDao.attendanceRegist(employeeId, workingDay, attedancetype);
-			List<AttendanceBean> attendanceList = attenDao.getAttendanceList(employeeId);
+			attendanceList = attenDao.getAttendanceList(employeeId);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
-			ObjectMapper mapper = new ObjectMapper();
-			String json = mapper.writeValueAsString(attendanceList);
-			response.getWriter().write(json);
-			if(registCount == 0 ) {
-				error = mapper.writeValueAsString(Map.of("error","未入力です。"));
-			}
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
-			error = "出勤は登録済みです。";
-			
+			status = 500;
 			System.out.println("失敗");
 		}
-		
+		jsonMap.put("status", status);
+		jsonMap.put("list", attendanceList);
+		ObjectMapper mapper = new ObjectMapper();
+		String json = mapper.writeValueAsString(jsonMap);
+		response.getWriter().write(json);
+		System.out.println(json);
+		}
 	}
 
-}

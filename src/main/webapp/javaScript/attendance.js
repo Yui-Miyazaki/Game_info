@@ -8,7 +8,7 @@ $(".attedanceBtn").on('click', function() {
 		},
 		dataType : "json"
 	}).done(function(result) {
-		console.log(result.error);
+		alert(result.status);
 		$("#attendanceResult").empty();
 		$("#attendanceResult").append(
 			"<tr>" +
@@ -21,31 +21,31 @@ $(".attedanceBtn").on('click', function() {
 			"<tr>" 
 			);
 			
-			$.each(result, function(index, result) {
-				let breakIn = result.breakIn;
+			$.each(result.list, function(index, listItem) {
+				let breakIn = listItem.breakIn;
 				if(breakIn === null){
 					breakIn = "未入力";
 				}
-				let breakEnd = result.breakEnd;
+				let breakEnd = listItem.breakEnd;
 				if(breakEnd === null){
 					breakEnd = "未入力";
 				}
-				let clockEnd = result.clockEnd;
+				let clockEnd = listItem.clockEnd;
 				if(clockEnd === null){
 					clockEnd = "未入力";
 				}
            $("#attendanceResult").append(
+			   
                    "<tr>"+ 
-                    "<td>" + result.workingDay + "</td>" + 
-                    "<td>" + result.clockIn + "</td>" +
-                    "<td>" + breakIn + "</td>" + 
-                    "<td>" + breakEnd + "</td>" +
-                    "<td>" + clockEnd + "</td>" +
+                    "<td>" + listItem.workingDay + "</td>" + 
+                    "<td>" + listItem.clockIn + "</td>" +
+                    "<td>" + listItem.breakIn + "</td>" + 
+                    "<td>" + listItem.breakEnd + "</td>" +
+                    "<td>" + listItem.clockEnd + "</td>" +
                     "</tr>"
 		);
 	});
 }).fail(function() {
-	 console.error("エラー内容:", textStatus, errorThrown);
 	alert("読み込み失敗");
 	});
 });
