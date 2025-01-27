@@ -48,14 +48,26 @@ ALTER TABLE m_game ADD FOREIGN KEY (item_code) REFERENCES t_stock(item_code);
  
 CREATE TABLE m_login(            
     login_id VARCHAR(20),
-    hash_pass  VARCHAR(32) NOT NULL,
     salt VARCHAR(100),
-    hash_salt VARCHAR(200),
+    hash_pass VARCHAR(200),
+    authority_code VARCHAR(10),
     PRIMARY KEY(login_id)
 )ENGINE = InnoDB DEFAULT CHARSET = utf8;
  
+CREATE TABLE m_authority(            
+    authority_code VARCHAR(10),
+    authority_name VARCHAR(20),
+    PRIMARY KEY(authority_code)
+)ENGINE = InnoDB DEFAULT CHARSET = utf8;
+ 
+INSERT INTO m_authority
+VALUES
+    ("ADMIN","管理者"),
+    ("USER","一般ユーザ");
+ 
 CREATE TABLE m_employee(            
     employee_id INT AUTO_INCREMENT,
+    login_id VARCHAR(20),
     name VARCHAR(32) NOT NULL,
     age INT,
     post_code VARCHAR(20),
@@ -63,13 +75,13 @@ CREATE TABLE m_employee(
 )ENGINE = InnoDB DEFAULT CHARSET = utf8;
  
 INSERT INTO  
-m_employee(name,age,post_code)
+m_employee(login_id,name,age,post_code)
 VALUES
-    ("佐藤 健",39,"A"),
-    ("鈴木 博",28,"B"),
-    ("高橋 学",22,"C"),
-    ("田中 恵一",33,"B"),
-    ("山田 太郎",21,"D");
+    ("Admin","佐藤 健",39,"A"),
+    ("U01","鈴木 博",28,"B"),
+    ("U02","高橋 学",22,"C"),
+    ("U03","田中 恵一",33,"B"),
+    ("U04","山田 太郎",21,"D");
  
 CREATE TABLE m_post(            
     post_code VARCHAR(20),
@@ -82,3 +94,19 @@ INSERT INTO m_post VALUES
     ("B","リーダ"),
     ("C","アルバイト"),
     ("D","アルバイト研修生");
+ 
+CREATE TABLE t_Attendance(
+    attendance_id INT AUTO_INCREMENT,
+    employee_id INT,
+    working_day DATE,
+    clock_in DATETIME,
+    break_in DATETIME,
+    break_end DATETIME,
+    clock_end DATETIME,
+    PRIMARY KEY(attendance_id),
+    UNIQUE KEY unique_employee_day (employee_id, working_day)
+)ENGINE = InnoDB DEFAULT CHARSET = utf8;
+ALTER TABLE t_Attendance ADD FOREIGN KEY (employee_id) REFERENCES m_employee(employee_id);
+ 
+ALTER TABLE m_loginADD CONSTRAINT fk_login_employeeFOREIGN KEY (login_id) REFERENCES m_employee(login_id);
+ 

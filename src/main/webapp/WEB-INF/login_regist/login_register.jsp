@@ -46,11 +46,6 @@
 		<input type="button" class="btn" value="新規登録" onclick="audio('loginRegisterForm')">
 	</form>
 	</div>
-	<form id="loginForm" action="loginUserList" method="get">
-			<div>
-				<button type="button" class="btn" onclick="audio('loginForm')">一覧画面へ</button>
-		    </div>
-		</form>
 	<audio id="btnClick_audio">
 		<source src="sounds/PC-Mouse05-1.mp3" type="audio/mp3">
 	</audio>

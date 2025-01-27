@@ -57,7 +57,9 @@ public class LoginServlet extends HttpServlet {
 				HashSolt hashSalt = new HashSolt();
 				String hashPass = hashSalt.getHashPass(salt, password);
 				String authorityCode = loginDao.loginCheck(loginId, hashPass);
-
+				
+				System.out.println(authorityCode);
+				
 				if (authorityCode != null) {
 					HttpSession session = request.getSession();
 					session.setAttribute("loginId", loginId);

@@ -26,6 +26,9 @@ String errorMessage = (String)request.getAttribute("errorMessage");
 			<span>パスワード</span><br>
 			<input type="password" class="textBox" name="password"><br>
 			<input type="button" class="btn" value="ログイン" onclick="audio('loginForm')">
+		</form><br>
+		<form id="loginRegisterForm" action="loginRegister" method="get">
+			<input type="button" class="btn" value="新規登録" onclick="audio('loginRegisterForm')">
 		</form>
 	</div>
 	</main>
